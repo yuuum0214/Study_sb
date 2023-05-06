@@ -16,4 +16,19 @@ public class UserController {
 	public String index() {
 		return "index.html";
 	}
+	
+	@GetMapping("/resume")
+	public String resume() {
+		return "resume.html";
+	}
+	
+	@GetMapping("/projects")
+	public String projects() {
+		return "projects.html";
+	}
+	
+	@GetMapping("/contact")
+	public String contact() {
+		return "contact.html";
+	}
 }
