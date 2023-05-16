@@ -3,9 +3,48 @@
                         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.co.kr.mapper.UserMapper">
 
-    <!-- delete -->
-    <delete id="mbRemove" parameterType="hashMap">
-       DELETE FROM jsp.member WHERE mb_seq=#{mbSeq}
-    </delete>
-    
+    <!-- 전체 리스트 조회 -->
+  <select id="smbSelectList" resultType="com.co.kr.domain.LoginDomain" parameterType="hashMap">
+    SELECT * FROM shop.s_member WHERE smb_seq=#{smbSeq}
+  </select>
+  
+    <!-- 전체 데이터 조회 -->
+  <select id="smbAllList" resultType="com.co.kr.domain.LoginDomain" parameterType="map">
+    SELECT * FROM shop.s_member order by smb_update desc limit #{offset}, #{contentnum}
+  </select>
+  
+  <!-- 신규 저장 -->
+  <insert id="smbCreate" parameterType="com.co.kr.domain.LoginDomain">
+    INSERT INTO shop.s_member (smb_id, smb_pw, smb_level, smb_ip, smb_use, smb_create, smb_update)
+    VALUES (#{smbId}, #{smbPw}, #{smbLevel}, #{smbIp}, #{smbUse}, #{smbCreate}, #{smbUpdate})
+  </insert>
+  
+  <!-- 전체 갯수 조회 -->
+  <select id="smbGetAll" resultType="int">
+    SELECT COUNT(*) FROM shop.s_member
+  </select>
+  
+  <!-- 중복 체크 -->
+  <select id="smbDuplicationCheck" resultType="int" parameterType="hashMap">
+    SELECT COUNT(*) FROM shop.s_member WHERE smb_id = #{smbId} AND smp_pw=#{smbPw}
+  </select>
+  
+  <!-- ID 정보 가져오기 -->
+  <select id="smbGetId" resultType="com.co.kr.domain.LoginDomain" parameterType="hashMap">
+    SELECT * FROM shop.s_member WHERE smb_id = #{smbId}
+  </select>
+  
+  <!-- 업데이트 -->
+  <update id="smbUpdate" parameterType="com.co.kr.domain.LoginDomain">
+    UPDATE shop.s_member
+    SET smb_pw = #{smbPw}, smb_level = #{smbLevel}, smb_ip = #{smbIp}, smb_use = #{smbUse}, smb_update = now()
+    WHERE smb_seq = #{smbSeq}
+  </update>
+  
+  <!-- 삭제 -->
+  <delete id="smbRemove" parameterType="hashMap">
+    DELETE FROM shop.s_member
+    WHERE smb_seq = #{smbSeq}
+  </delete>
+  
 </mapper>
