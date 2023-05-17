@@ -27,8 +27,8 @@ public class UserController {
 		return "projects.html";
 	}
 	
-	@GetMapping("/contact")
-	public String contact() {
-		return "contact.html";
+	@GetMapping("/login")
+	public String login() {
+		return "login.html";
 	}
 }

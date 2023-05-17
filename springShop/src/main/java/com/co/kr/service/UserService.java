@@ -1,14 +1,10 @@
-package com.co.kr.mapper;
+package com.co.kr.service;
 
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import com.co.kr.domain.LoginDomain;
-
-@Mapper
-public interface UserMapper {
+public interface UserService {
 	
 	//전체 리스트 조회
     public LoginDomain smbSelectList(Map<String, String> map);
@@ -33,5 +29,5 @@ public interface UserMapper {
     
     //삭제
     public void smbRemove(Map<String, String> map);
-    
+
 }
