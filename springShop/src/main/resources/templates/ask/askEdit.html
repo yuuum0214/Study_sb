@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net/nz/thymeleaf/layout"
+    layout:decorate="~{layouts/layout}">
+     <head>
+    	<title>about</title>
+    </head>
+    <div layout:fragment="content">
+    	
+    	<table>
+    		<tr>
+    			<th>문의사항</th>
+    			<td>
+    				<input type="text" placeholder="제목" required/>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>문의 분류</th>
+    			<td>
+    				<form>
+    					<select name="ask">
+    						<option value="1">상품 주문</option>
+    						<option value="2">상품 배송</option>
+    						<option value="3">반품 및 교환</option>
+    					</select>
+    				</form>
+    			</td>
+    		</tr>
+    	</table>
+    
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </div>
+</html>
