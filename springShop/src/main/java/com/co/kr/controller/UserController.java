@@ -27,6 +27,11 @@ public class UserController {
 		return "projects.html";
 	}
 	
+	@GetMapping("/projects/askEdit")
+	public String askEdit() {
+		return "askEdit.html";
+	}
+	
 	@GetMapping("/login")
 	public String login() {
 		return "login.html";
