@@ -40,16 +40,6 @@ public class UserController {
 		return "resume.html";
 	}
 	
-	@GetMapping("/projects")
-	public String projects() {
-		return "projects.html";
-	}
-	
-	@GetMapping("/projects/askEdit")
-	public String askEdit() {
-		return "askEdit.html";
-	}
-	
 	@GetMapping("/login")
 	public String login() {
 		return "login.html";
