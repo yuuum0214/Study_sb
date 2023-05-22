@@ -9,21 +9,16 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 @RequestMapping(value = "/")
-public class UserController {
+public class AskController {
 
-	//진입점
-	@GetMapping("/")
-	public String index() {
-		return "index.html";
+	@GetMapping("/projects")
+	public String projects() {
+		return "projects.html";
 	}
 	
-	@GetMapping("/resume")
-	public String resume() {
-		return "resume.html";
+	@GetMapping("/projects/askEdit")
+	public String askEdit() {
+		return "askEdit.html";
 	}
 	
-	@GetMapping("/login")
-	public String login() {
-		return "login.html";
-	}
 }
