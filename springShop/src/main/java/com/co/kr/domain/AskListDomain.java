@@ -11,7 +11,7 @@ public class AskListDomain {
 	private String cType;
 	private String smbId;
 	private String ibTitle;
-//	private String ibContent;
+	private String ibContent;
 	private String ibCreate;
 
 }
