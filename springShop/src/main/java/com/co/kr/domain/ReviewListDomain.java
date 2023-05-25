@@ -7,7 +7,7 @@ import lombok.Data;
 @Builder(builderMethodName="builder")
 public class ReviewListDomain {
 	
-	private String rdSeq;
+	private String rbSeq;
 	private String smbId;
 	private String rbTitle;
 	private String rbContent;

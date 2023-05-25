@@ -38,10 +38,6 @@ public class UserController {
         return "index.html";
     }
 
-    @GetMapping("/resume")
-    public String resume() {
-        return "resume.html";
-    }
     
     @GetMapping("/login")
     public String login() {
@@ -88,6 +84,8 @@ public class UserController {
 
         return "redirect:/"; // 로그인 성공 시 홈 페이지로 리다이렉트
     }
+    
+    
     
     
 

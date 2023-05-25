@@ -6,7 +6,7 @@
 	<!--select all-->
 	<select id="selectReviewList" resultType="com.co.kr.domain.ReviewListDomain">
 	  SELECT rb_seq, smb_id, rb_title, rb_content, rb_create, rb_update
-	  FROM shop.review_b order by rd_update desc
+	  FROM shop.review_b order by rb_update desc
 	</select>
 
 </mapper>
