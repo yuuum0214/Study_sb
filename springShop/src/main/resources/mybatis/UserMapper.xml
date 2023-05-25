@@ -26,7 +26,7 @@
   
   <!-- 중복 체크 -->
   <select id="smbDuplicationCheck" resultType="int" parameterType="hashMap">
-    SELECT COUNT(*) FROM shop.s_member WHERE smb_id = #{smbId} AND smp_pw=#{smbPw}
+    SELECT COUNT(*) FROM shop.s_member WHERE smb_id = #{smbId} AND smb_pw=#{smbPw}
   </select>
   
   <!-- ID 정보 가져오기 -->
