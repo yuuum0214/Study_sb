@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder(builderMethodName="builder")
-public class BoardListDomain {
+public class ReviewListDomain {
 	
 	private String rdSeq;
 	private String smbId;

@@ -4,24 +4,22 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.co.kr.domain.BoardListDomain;
+import com.co.kr.domain.ReviewListDomain;
+import com.co.kr.mapper.ReviewMapper;
 import com.co.kr.mapper.UploadMapper;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Service
-@Transactional
-public class UploadServiceImpl implements UploadService {
+public class ReviewServiceImpl implements ReviewService{
 	
 	@Autowired
-	private UploadMapper uploadMapper;
+	private ReviewMapper reviewMapper;
 	
 	@Override
-	public List<BoardListDomain> boardList() {
+	public List<ReviewListDomain> selectReviewList() throws Exception {
 		// TODO Auto-generated method stub
-		return uploadMapper.boardList();
+		return reviewMapper.selectReviewList();
 	}
 
 }
