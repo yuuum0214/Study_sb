@@ -18,7 +18,6 @@ public class ReviewServiceImpl implements ReviewService{
 	
 	@Override
 	public List<ReviewListDomain> selectReviewList() throws Exception {
-		// TODO Auto-generated method stub
 		return reviewMapper.selectReviewList();
 	}
 
