@@ -34,23 +34,26 @@ public class AskController {
 		ModelAndView mav = new ModelAndView("/projects");
 		
 		List<AskListDomain> list = askService.selectAskList();
-		mav.addObject("list", list);
+		mav.addObject("lists", list);
 		
 		return mav;
 	}
 
 	
-	/*
 	//문의사항 작성란
 	@RequestMapping(value = "/projects/askEdit")
+	public String openAskEdit() throws Exception{
+		return "/ask/askEdit";
+	}
+	/*
 	public ModelAndView ask() throws Exception{
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("askEdit.html");
 		return mav;
 	}
+
 	*/
-	
 	/*
 	@GetMapping("/askEdit")
 	public String askEdit() {

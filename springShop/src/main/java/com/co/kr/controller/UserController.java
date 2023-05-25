@@ -37,11 +37,6 @@ public class UserController {
     public String index() {
         return "index.html";
     }
-
-    @GetMapping("/resume")
-    public String resume() {
-        return "resume.html";
-    }
     
     @GetMapping("/login")
     public String login() {
