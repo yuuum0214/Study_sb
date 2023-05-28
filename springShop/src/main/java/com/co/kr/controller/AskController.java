@@ -42,7 +42,7 @@ public class AskController {
 	//문의사항 작성란
 	@RequestMapping("/projects/askEdit")
 	public String openAskEdit() throws Exception{
-		return "/ask/askEdit";
+		return "ask/askEdit";
 	}
 	
 	
