@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net/nz/thymeleaf/layout"
-    layout:decorate="~{layouts/layout}">
+    layout:decorate="~{layouts/editlayout}">
      <head>
      	<meta charset="UTF-8">
     	<title>AskEdit</title>
@@ -17,21 +17,22 @@
             </div>
         </section>
         
-        <!-- AskEdit Section
+        <!-- AskEdit Section -->
         <section class="py-5">
             <div class="container px-5 mb-5">
 	            <div class="text-center mb-5">
 	                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Q&A</span></h1>
 	            </div>
 	            <div class="bg-white py-4 mt-auto" >
+	            	<form action=""></form>
             		<table class="ask Edit">
         			<thead>
     				<tr>
-		    			<th>문의사항</th>
+		    			<td>문의사항</td>
 	    				<td colspan="4">
 		    				<input type="text" placeholder="제목" required/>
 		    			</td>
-		    			<th>문의 분류</th>
+		    			<td>문의 분류</td>
 	    				<td colspan="4">
    							<form>
 		    					<select name="combox">
@@ -46,7 +47,7 @@
 		    		</table>
             	</div>
             </div>
-        </section> -->
+        </section> 
 
     	
     
