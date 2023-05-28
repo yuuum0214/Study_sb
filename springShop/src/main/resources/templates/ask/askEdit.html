@@ -13,6 +13,8 @@
         <section class="py-5 bg-gradient-primary-to-secondary text-white">
             <div class="container px-5 my-5">
                 <div class="text-center">
+	                <h5 class="display-4 fw-bolder mb-4">Q&A</h5>
+   	                <h4 class="mb-0"><span>문의 분류에 알맞게 문의사항을 작성해주시기바랍니다.</span></h4>
                 </div>
             </div>
         </section>
@@ -21,30 +23,50 @@
         <section class="py-5">
             <div class="container px-5 mb-5">
 	            <div class="text-center mb-5">
-	                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Q&A</span></h1>
+
 	            </div>
 	            <div class="bg-white py-4 mt-auto" >
-	            	<form action=""></form>
-            		<table class="ask Edit">
-        			<thead>
-    				<tr>
-		    			<td>문의사항</td>
-	    				<td colspan="4">
-		    				<input type="text" placeholder="제목" required/>
-		    			</td>
-		    			<td>문의 분류</td>
-	    				<td colspan="4">
-   							<form>
-		    					<select name="combox">
-		    						<option value="1">상품 주문</option>
-		    						<option value="2">상품 배송</option>
-		    						<option value="3">반품 및 교환</option>
-		    					</select>
-		    				</form>
-		    			</td>
-		    		</tr>
-					</thead>
-		    		</table>
+	            
+	            	<form id="frm" name="frm" method="post" action="/insertAsk">
+	            		<table class="ask_Edit">
+		        			<tr>
+		        				<td><h5>문의 순번</h5></td>
+		        				<td></td>
+		        			</tr>
+		        			<tr>
+				    			<td><h5>문의 분류</h5></td>
+				    			<td colspan="4">
+		   							<form>
+				    					<select name="combox">
+				    						<option value="1">상품 주문</option>
+				    						<option value="2">상품 배송</option>
+				    						<option value="3">반품 및 교환</option>
+				    					</select>
+				    				</form>
+			    				</td>
+				    		</tr>
+		    				<tr>
+				    			<td><h5>문의제목</h5></td>
+			    				<td colspan="4">
+				    				<input type="text" id="ibTitle" name="ibTitle" placeholder="제목" required/>
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td><h5>작성자</h5></td>
+				    			<td></td>
+				    		</tr>
+				    		<tr>
+				    			<td><h5>작성 일자</h5></td>
+				    			<td></td>
+				    		</tr>
+				    		<tr>
+				    			<td style="vertical-align:top"><h5>문의 내용</h5></td>
+				    			<td colspan="4"><textarea name="ibContent" cols="120" rows="15"></textarea></td>
+				    		</tr>
+			    		</table>
+			    			<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" type="submit">문의하기</button>
+		    				<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" type="reset">취소하기</button>
+		    		</form>
             	</div>
             </div>
         </section> 
