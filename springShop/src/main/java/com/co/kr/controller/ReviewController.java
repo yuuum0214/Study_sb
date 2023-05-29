@@ -22,14 +22,19 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
     
-    @RequestMapping("/resume")
+    @RequestMapping("/review")
 	public ModelAndView openReviewList() throws Exception { 
-		ModelAndView mav = new ModelAndView("/resume");
+		ModelAndView mav = new ModelAndView("/review");
 		
 		List<ReviewListDomain> list = reviewService.selectReviewList();
 		mav.addObject("list", list);
 		
 		return mav; 
+	}
+    
+    @RequestMapping("/review/reviewWrite")
+	public String openReviewWrite() throws Exception{
+		return "/review/reviewWrite";
 	}
 
 }
