@@ -22,14 +22,27 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
     
-    @RequestMapping("/resume")
+//  리뷰
+    @RequestMapping("/review")
 	public ModelAndView openReviewList() throws Exception { 
-		ModelAndView mav = new ModelAndView("/resume");
+		ModelAndView mav = new ModelAndView("/review");
 		
 		List<ReviewListDomain> list = reviewService.selectReviewList();
 		mav.addObject("list", list);
 		
 		return mav; 
 	}
-
+    
+//  글쓰기
+    @RequestMapping("/review/reviewWrite")
+	public String openReviewWrite() throws Exception{
+		return "/review/reviewWrite";
+	}
+    
+//   작성된 게시글을 등록하는 주소
+//    @RequestMapping("/review/reviewWrite")
+//	public String insertReview(ReviewListDomain review) throws Exception{
+//    	reviewService.insertReview(review);
+//		return "redirect:/review/openReviewList";
+//	}
 }

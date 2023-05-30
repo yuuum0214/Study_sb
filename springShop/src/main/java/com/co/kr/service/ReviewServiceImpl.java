@@ -20,5 +20,10 @@ public class ReviewServiceImpl implements ReviewService{
 	public List<ReviewListDomain> selectReviewList() throws Exception {
 		return reviewMapper.selectReviewList();
 	}
+	
+//	@Override
+//	public void insertReview(ReviewListDomain review) throws Exception{
+//		reviewMapper.insertReview(review);
+//	}
 
 }

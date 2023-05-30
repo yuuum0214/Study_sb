@@ -10,5 +10,7 @@ import com.co.kr.domain.ReviewListDomain;
 public interface ReviewMapper {
 	
 	List<ReviewListDomain> selectReviewList() throws Exception;
+	
+//	void insertReview(ReviewListDomain review) throws Exception;
 
 }
