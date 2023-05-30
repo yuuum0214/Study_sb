@@ -9,10 +9,12 @@
 	  FROM shop.review_b order by rb_update desc
 	</select>
 	
-	<!-- content -->
+	<!-- content insert -->
 	<select id="insertReview" resultType="com.co.kr.domain.ReviewListDomain" parameterType="map">
     	SELECT rb_seq, smb_id, rb_title, rb_content, rb_create, rb_update
     	FROM shop.review_b where rb_seq = #{rbSeq}
 	</select>
+	
+	
 
 </mapper>

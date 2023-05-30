@@ -19,7 +19,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(value = "/")
 public class ReviewController {
 
-    @Autowired
+    private static final ReviewListDomain ReviewListDomain = null;
+	@Autowired
     private ReviewService reviewService;
     
 //  리뷰
@@ -39,10 +40,11 @@ public class ReviewController {
 		return "/review/reviewWrite";
 	}
     
+    
 //   작성된 게시글을 등록하는 주소
-//    @RequestMapping("/review/reviewWrite")
-//	public String insertReview(ReviewListDomain review) throws Exception{
-//    	reviewService.insertReview(review);
-//		return "redirect:/review/openReviewList";
-//	}
+    @RequestMapping("/review/insertReview")
+	public String insertReview(ReviewListDomain reviewListDomain) throws Exception{
+    	reviewService.insertReview(reviewListDomain);
+		return "redirect:/review";
+	}
 }

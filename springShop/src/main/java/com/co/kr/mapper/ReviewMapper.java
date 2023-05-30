@@ -9,8 +9,11 @@ import com.co.kr.domain.ReviewListDomain;
 @Mapper
 public interface ReviewMapper {
 	
+	//content list
 	List<ReviewListDomain> selectReviewList() throws Exception;
 	
-//	void insertReview(ReviewListDomain review) throws Exception;
+	//content insert
+	void insertReview(ReviewListDomain reviewListDomain) throws Exception;
 
+	
 }
