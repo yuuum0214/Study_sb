@@ -8,9 +8,10 @@ import com.co.kr.domain.ReviewListDomain;
 
 @Service
 public interface ReviewService {
-	
+	//목록 조회
 	List<ReviewListDomain> selectReviewList() throws Exception;
 	
-//	void insertReview(ReviewListDomain review) throws Exception;
+	//content insert
+	void insertReview(ReviewListDomain reviewListDomain) throws Exception;
 
 }
