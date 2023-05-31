@@ -29,9 +29,9 @@ public class AskController {
 	@Autowired
 	private AskService askService;
 	
-	@RequestMapping("/projects")
+	@RequestMapping("/ask")
 	public ModelAndView openAskList() throws Exception{
-		ModelAndView mav = new ModelAndView("/projects");
+		ModelAndView mav = new ModelAndView("/ask");
 		
 		List<AskListDomain> list = askService.selectAskList();
 		mav.addObject("lists", list);
@@ -40,17 +40,10 @@ public class AskController {
 	}
 
 	//문의사항 작성란
-	@RequestMapping("/projects/askEdit")
+	@RequestMapping("/ask/askEdit")
 	public String openAskEdit() throws Exception{
 		return "ask/askEdit";
 	}
 	
-	
-	/*
-	@GetMapping("/askEdit")
-	public String askEdit() {
-		return "askEdit.html";
-	}
-	*/
 	
 }

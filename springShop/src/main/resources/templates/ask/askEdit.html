@@ -2,6 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net/nz/thymeleaf/layout"
     layout:decorate="~{layouts/editlayout}">
+
      <head>
      	<meta charset="UTF-8">
     	<title>AskEdit</title>
@@ -28,12 +29,12 @@
 	            <div class="bg-white py-4 mt-auto" >
 	            
 	            	<form id="frm" name="frm" method="post" action="/insertAsk">
-	            		<table class="ask_Edit">
+	            		<table class="ask_Edit" style="margin-left:50px">
 		        			<tr>
 				    			<td><h5><b>문의 분류</b></h5></td>
 				    			<td colspan="4">
 		   							<form>
-				    					<select name="combox">
+				    					<select name="combox" style="width:250px">
 				    						<option value="1">상품 주문</option>
 				    						<option value="2">상품 배송</option>
 				    						<option value="3">반품 및 교환</option>
@@ -44,17 +45,19 @@
 		    				<tr>
 				    			<td><h5><b>문의제목</b></h5></td>
 			    				<td colspan="4">
-				    				<input type="text" id="ibTitle" name="ibTitle" placeholder="제목" required/>
+				    				<input type="text" id="ibTitle" name="ibTitle" style="width:500px" placeholder="제목" required/>
 				    			</td>
 				    		</tr>
 				    		<tr>
 				    			<td style="vertical-align:top"><h5><b>문의 내용</b></h5></td>
-				    			<td colspan="4"><textarea name="ibContent" cols="120" rows="15"></textarea></td>
+				    			<td colspan="4"><textarea id="ibContent" name="ibContent" cols="120" rows="15"></textarea></td>
 				    		</tr>
 			    		</table>
-			    			<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" type="submit">문의하기</button>
-		    				<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" type="reset">취소하기</button>
-		    		</form>
+   		            	<div style="text-align:center">
+            	    		<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" type="submit" id="submit">문의하기</button>
+    						<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" type="reset" id="reset" onclick="history.go(-1)">취소하기</button>
+		    			</div>
+			    	</form>	
             	</div>
             </div>
         </section> 
