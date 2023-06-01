@@ -3,8 +3,10 @@
                         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.co.kr.mapper.AskMapper">
 	<select id="selectAskList" resultType="com.co.kr.domain.AskListDomain">
-		SELECT ib_seq, c_type, ib_title, smb_id, ib_content, ib_create
-		FROM shop.ask_view order by ib_seq desc
+		SELECT kb.ib_seq , C.c_type, kb.ib_title, kb.smb_id, kb.ib_content , kb.ib_create 
+		FROM shop.ask_b AS kb, shop.combox AS C
+		WHERE kb.num = C.num
+		ORDER BY kb.ib_seq DESC
 	</select>
 	
 </mapper>
