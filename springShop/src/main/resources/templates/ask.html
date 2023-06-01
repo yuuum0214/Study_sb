@@ -47,7 +47,14 @@
 								<tr th:each="list : ${lists}">
 									<td style="text-align:center" th:text="${list.ibSeq}"></td>
 									<td style="text-align:center" th:text="${list.cType}"></td>
-									<td th:text="${list.ibTitle}"></td>
+									<td class="title">
+										<a href="/ask/openAskDetail?ibSeq="
+											th:attrappend="href=${list.ibSeq}"
+											th:text="${list.ibTitle}"
+											style="text-decoration: none; color: black;"
+										>
+										</a>
+									</td>
 									<td style="text-align:center" th:text="${list.smbId}"></td>
 									<td style="text-align:center" th:text="${list.ibCreate}"></td>
 								</tr>

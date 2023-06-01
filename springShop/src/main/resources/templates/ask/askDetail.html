@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net/nz/thymeleaf/layout"
+    layout:decorate="~{layouts/editlayout}">
+
+     <head>
+     	<meta charset="UTF-8">
+    	<title>AskDetail</title>
+    </head>
+    
+    <div layout:fragment="content">
+
+        <!-- Call to action section-->
+        
+            <!-- Call to action section-->
+            <section class="py-5 bg-gradient-primary-to-secondary text-white">
+                <div class="container px-5 my-5">
+                    <div class="text-center">
+                        <h5 class="display-4 fw-bolder mb-4">Inquiries about the product</h5>
+                        <a href="/ask/askEdit" class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder">문의하기</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Projects Section-->
+            <section class="py-5">
+                <div class="container px-5 mb-5">
+                    <div class="text-center mb-5">
+                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Q&A</span></h1>
+                    </div>
+                    <div class="bg-white py-4 mt-auto">
+						<table class="ask detail table">
+							<tr>
+								<th scope="row" style="text-align:center">NO</th>
+								<td th:text="${askListDomain.ibSeq}"></td>
+								<th scope="row" style="text-align:center">작성 일자</th>
+								<td th:text="${askListDomain.ibCreate}"></td>
+							</tr>
+							<tr>
+								<th scope="row" style="text-align:center">문의 분류</th>
+								<td th:text="${askListDomain.cType}"></td>
+								<th scope="row" style="text-align:center">작성자</th>
+								<td th:text="${askListDomain.smbId}"></td>
+							</tr>
+							<tr>
+								<th scope="row" style="text-align:center">제목</th>
+								<td colspan="3">
+									<input type="text" id="ibTitle" name="ibTitle" style="border:none" th:value="${askListDomain.ibTitle}"></input>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row" style="text-align:center">문의 내용</th>
+							</tr>
+							<tr>
+								<td colspan="4" class="view_text"  style="text-align:center">
+									<textarea title="내용" id="ibContent" name="ibContent" style="border: none" cols="120" rows="15" th:text="${askListDomain.ibContent}"></textarea>
+								</td>
+							</tr>
+						</table>
+						
+						<div style="text-align:right">
+            	    		<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" onclick="history.go(-1)">목록으로</button>
+    						<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">수정하기</button>
+    						<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">삭제하기</button>
+		    			</div>
+						
+                    </div>
+                </div>
+            </section>
+
+    	
+    
+        <!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+    </div>
+
+</html>
