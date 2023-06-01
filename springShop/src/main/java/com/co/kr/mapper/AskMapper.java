@@ -10,4 +10,7 @@ import com.co.kr.domain.AskListDomain;
 public interface AskMapper {
 
 	List<AskListDomain> selectAskList() throws Exception;
+	
+	//ask게시글 작성
+	void insertAsk(AskListDomain askListDomain) throws Exception;
 }
