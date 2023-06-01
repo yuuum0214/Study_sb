@@ -18,4 +18,10 @@ public class AskServiceImpl implements AskService {
 	public List<AskListDomain> selectAskList() throws Exception {
 		return askMapper.selectAskList();
 	}
+	/*
+	@Override
+	public void insertAsk(AskListDomain askListDomain) throws Exception {
+		askMapper.insertAsk(askListDomain);
+	}
+	*/
 }
