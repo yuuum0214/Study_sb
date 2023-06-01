@@ -13,4 +13,7 @@ public interface AskMapper {
 	
 	//ask게시글 작성
 	void insertAsk(AskListDomain askListDomain) throws Exception;
+	
+	//ask상세보기
+	AskListDomain selectAskDetail(int ibSeq) throws Exception;
 }

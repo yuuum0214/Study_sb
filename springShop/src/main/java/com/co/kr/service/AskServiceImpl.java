@@ -24,4 +24,12 @@ public class AskServiceImpl implements AskService {
 	public void insertAsk(AskListDomain askListDomain) throws Exception {
 		askMapper.insertAsk(askListDomain);
 	}
+	
+	//ask상세보기
+	@Override
+	public AskListDomain selectAskDetail(int ibSeq) throws Exception{
+		AskListDomain askListDomain = askMapper.selectAskDetail(ibSeq);
+		
+		return askListDomain;
+	}
 }
