@@ -45,5 +45,11 @@ public class AskController {
 		return "ask/askEdit";
 	}
 	
+	@RequestMapping("/ask/insertAsk")
+	public String insertAsk(AskListDomain askListDomain) throws Exception{
+		askService.insertAsk(askListDomain);
+		return "redirect:/ask";
+	}
+	
 	
 }

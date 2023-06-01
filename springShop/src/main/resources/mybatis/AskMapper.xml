@@ -9,4 +9,9 @@
 		ORDER BY kb.ib_seq DESC
 	</select>
 	
+	<!-- insert문 -->
+	<insert id="insertAsk" parameterType="com.co.kr.domain.AskListDomain">
+		INSERT INTO shop.ask_b (ib_seq, num, ib_title, smb_id, ib_content, ib_create)
+		VALUES (#{ibSeq}, #{cType}, #{ibTitle}, 'admin', #{ibContent}, NOW())
+	</insert>
 </mapper>
