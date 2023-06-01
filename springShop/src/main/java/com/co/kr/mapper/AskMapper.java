@@ -10,6 +10,4 @@ import com.co.kr.domain.AskListDomain;
 public interface AskMapper {
 
 	List<AskListDomain> selectAskList() throws Exception;
-	
-	//void insertAsk(AskListDomain askListDomain) throws Exception;
 }

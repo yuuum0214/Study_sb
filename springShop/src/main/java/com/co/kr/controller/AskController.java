@@ -17,10 +17,17 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(value = "/")
 public class AskController {
 
+	/*
+	//문의사항으로 이동
+	@GetMapping("/projects")
+	public String projects() {
+		return "projects.html";
+	}
+	*/
+	
 	//문의사항 리스트
 	@Autowired
 	private AskService askService;
-//	private AskListDomain askListDomain;
 	
 	@RequestMapping("/ask")
 	public ModelAndView openAskList() throws Exception{
@@ -31,20 +38,12 @@ public class AskController {
 		
 		return mav;
 	}
-/*
+
 	//문의사항 작성란
-	@RequestMapping("ask/askEdit")
+	@RequestMapping("/ask/askEdit")
 	public String openAskEdit() throws Exception{
 		return "ask/askEdit";
 	}
-	*/
-	/*
-	//작성게시글 등록주소
-	@RequestMapping("/ask/insertAsk")
-	public String insertAsk() throws Exception{
-		askService.insertAsk(askListDomain);
-		return "redirect:/ask";
-	}
-	*/
+	
 	
 }

@@ -9,8 +9,8 @@ public class AskListDomain {
 
 	private String ibSeq;
 	private String cType;
-	private String ibTitle;
 	private String smbId;
+	private String ibTitle;
 	private String ibContent;
 	private String ibCreate;
 
