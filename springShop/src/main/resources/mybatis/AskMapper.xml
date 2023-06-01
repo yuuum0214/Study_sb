@@ -6,7 +6,7 @@
 		SELECT kb.ib_seq , C.c_type, kb.ib_title, kb.smb_id, kb.ib_content , kb.ib_create 
 		FROM shop.ask_b AS kb, shop.combox AS C
 		WHERE kb.num = C.num
-		ORDER BY kb.ib_seq desc
+		ORDER BY kb.ib_seq DESC
 	</select>
 	
 </mapper>
