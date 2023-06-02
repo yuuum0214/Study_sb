@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
                         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.co.kr.mapper.AskMapper">
+	
+	<!-- ask게시판 리스트 보이기 -->
 	<select id="selectAskList" resultType="com.co.kr.domain.AskListDomain">
 		SELECT kb.ib_seq , C.c_type, kb.ib_title, kb.smb_id, kb.ib_content , kb.ib_create 
 		FROM shop.ask_b AS kb, shop.combox AS C
@@ -21,4 +23,19 @@
 		FROM shop.ask_b AS kb, shop.combox AS C
 		WHERE kb.num = C.num AND kb.ib_seq = #{ibSeq}
 	</select>
+	
+	<!-- 게시글 수정 -->
+	<update id="updateAsk" parameterType="com.co.kr.domain.AskListDomain">
+	    UPDATE shop.ask_b
+	    SET ib_title = #{ibTitle}, ib_content = #{ibContent}
+	    WHERE ib_seq = #{ibSeq}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteAsk" parameterType="int">
+	    DELETE FROM shop.ask_b
+	    WHERE ib_seq = #{ibSeq}
+	</delete>
+	
+	
 </mapper>
