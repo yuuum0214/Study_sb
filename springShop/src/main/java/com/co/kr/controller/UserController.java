@@ -18,8 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.co.kr.domain.AskListDomain;
 import com.co.kr.domain.BoardListDomain;
 import com.co.kr.domain.LoginDomain;
+import com.co.kr.service.AskService;
+import com.co.kr.service.MemberService;
 import com.co.kr.service.UploadService;
 import com.co.kr.service.UserService;
 import com.co.kr.util.CommonUtils;
@@ -38,7 +41,27 @@ public class UserController {
         return "index.html";
     }
 
-    
+    //회원관리 예제
+/*    @GetMapping("/member")
+    public String member() {
+    	return "member.html";
+    }
+  */
+  
+	//회원관리 리스트
+	@Autowired
+	private MemberService memberService;
+	
+	@RequestMapping("/member")
+	public ModelAndView openUserList() throws Exception{
+		ModelAndView mav = new ModelAndView("/member");
+		
+		List<LoginDomain> list = memberService.smbAllList();
+		mav.addObject("lists", list);
+		
+		return mav;
+	}
+
 /*  @GetMapping("/login")
     public String login() {
     	return "login.html";
