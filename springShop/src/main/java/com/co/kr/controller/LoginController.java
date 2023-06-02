@@ -2,7 +2,6 @@ package com.co.kr.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.co.kr.domain.BoardListDomain;
 import com.co.kr.domain.LoginDomain;
-import com.co.kr.service.UploadService;
 import com.co.kr.service.UserService;
 import com.co.kr.util.CommonUtils;
 import com.co.kr.vo.LoginVO;
@@ -30,23 +28,15 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 @RequestMapping(value = "/")
-public class UserController {
-
-	 // 진입점
-    @GetMapping("/")
-    public String index() {
-        return "index.html";
-    }
-
-    
-/*  @GetMapping("/login")
+public class LoginController {
+	
+	@Autowired
+	private UserService userService;
+	
+	@GetMapping("/login")
     public String login() {
     	return "login.html";
     }
-
-    @Autowired
-    private UserService userService;
-
 
     @RequestMapping(value = "/login")
     public String login(LoginVO loginDTO, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
@@ -83,11 +73,7 @@ public class UserController {
 //        model.addAttribute("items", items);
 
         return "redirect:/"; // 로그인 성공 시 홈 페이지로 리다이렉트
-    } */
-    
-    
-    
-    
+    }
 
-	
+
 }

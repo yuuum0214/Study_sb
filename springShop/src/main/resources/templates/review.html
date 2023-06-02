@@ -38,9 +38,15 @@
                 </tr>
             </thead>
             	<tbody>
-                    <tr th:each="list : ${list}">
+                    <tr th:each="list : ${lists}">
 						<td style="text-align:center" th:text="${list.rbSeq}"></td>
-						<td style="text-align:center" th:text="${list.rbTitle}"></td>
+						<td class="title" style="text-align:center; ">
+							<a href="/review/openReviewDetail?rbSeq="
+							   th:attrappend="href=${list.rbSeq}"
+							   th:text="${list.rbTitle}"
+							   style="text-decoration: none; color: black;">
+							</a>
+						</td>			
 						<td style="text-align:center" th:text="${list.smbId}"></td>
 						<td style="text-align:center" th:text="${list.rbCreate}"></td>
 						<td style="text-align:center" th:text="${list.rbUpdate}"></td>
@@ -55,10 +61,10 @@
           
         </div>
         
-        <div class="pull-right" style="text-align: right;" >
+        <div style="text-align: right;" >
             <a href="/review/reviewWrite" class="btn btn-primary btn-block">글쓰기</a>
         </div>
-        
+
         
     </div>
     

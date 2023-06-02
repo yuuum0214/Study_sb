@@ -15,5 +15,7 @@ public interface ReviewMapper {
 	//content insert
 	void insertReview(ReviewListDomain reviewListDomain) throws Exception;
 
+	//상세 보기
+	ReviewListDomain selectReviewDetail(int rbSeq) throws Exception;
 	
 }
