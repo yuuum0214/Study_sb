@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.co.kr.domain.AskListDomain;
 import com.co.kr.domain.BoardListDomain;
 import com.co.kr.domain.ReviewListDomain;
 import com.co.kr.service.ReviewService;
@@ -59,5 +60,21 @@ public class ReviewController {
     	return mav;
     }
     
+
+//  수정
+  	@RequestMapping("/review/updateReview")
+  	public String updateReview(ReviewListDomain reviewListDomain) throws Exception{
+  		reviewService.updateReview(reviewListDomain);
+  		return "redirect:/review";
+  	}
+  	
+//  삭제
+  	@RequestMapping("/review/deleteReview")
+  	public String deleteReview(int rbSeq) throws Exception{
+  		reviewService.deleteReview(rbSeq);
+  		return "redirect:/review";
+  	}
+    
+
     
 }

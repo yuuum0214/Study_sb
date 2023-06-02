@@ -41,6 +41,7 @@ public class UserController {
         return "index.html";
     }
 
+
     //회원관리 예제
 /*    @GetMapping("/member")
     public String member() {
@@ -61,6 +62,7 @@ public class UserController {
 		
 		return mav;
 	}
+
 
 /*  @GetMapping("/login")
     public String login() {

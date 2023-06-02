@@ -16,6 +16,8 @@
         </div>
         
         <div class="bg-white container-fluid">
+
+        	<form id="frm" method="post">
                 <table class="review detail table">
                 <tbody>
                   <tr>
@@ -46,6 +48,36 @@
 				  </tr>
                   </tbody>
                 </table>
+
+                <input type="hidden" name="rbSeq" th:value="${reviewListDomain.rbSeq}">
+                </form>
+                
+                <div style="text-align:right">
+            		<input type="button" id="list" value="목록으로" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" onclick="history.go(-1)">
+    				<input type="button" id="edit" value="수정하기" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">
+    				<input type="button" id="delete" value="삭제하기" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">
+		    	</div>
+		    	
+		    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+						<script type="text/javascript">
+							$(document).ready(function(){
+								$("#edit").on("click", function(){
+									if(confirm("수정하시겠습니까?")){
+										var frm = $("#frm")[0];
+										frm.action = "updateReview"
+										frm.submit();
+									}
+								});
+								$("#delete").on("click", function(){
+									if(confirm("삭제하시겠습니까?")){
+										var frm = $("#frm")[0];
+										frm.action = "deleteReview"
+										frm.submit();
+									}
+								});
+							});
+						</script>
+
                 
                 <div style="text-align:right">
             	    <button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" onclick="history.go(-1)">목록으로</button>
