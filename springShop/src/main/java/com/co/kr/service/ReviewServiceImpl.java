@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.co.kr.domain.AskListDomain;
 import com.co.kr.domain.BoardListDomain;
 import com.co.kr.domain.ReviewListDomain;
 import com.co.kr.mapper.ReviewMapper;
@@ -31,6 +32,16 @@ public class ReviewServiceImpl implements ReviewService{
 		ReviewListDomain reviewListDomain = reviewMapper.selectReviewDetail(rbSeq);
 		
 		return reviewListDomain;
+	}
+	
+	@Override
+	public void updateReview(ReviewListDomain reviewListDomain) throws Exception{
+		reviewMapper.updateReview(reviewListDomain);
+	}
+		
+	@Override
+	public void deleteReview(int rbSeq) throws Exception{
+		reviewMapper.deleteReview(rbSeq);
 	}
 
 }

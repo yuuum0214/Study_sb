@@ -15,11 +15,25 @@
         VALUES (#{rbSeq}, #{rbTitle}, 'admin', #{rbContent}, NOW(), NOW())
     </insert>
     
+    <!-- 상세 보기 -->
     <select id="selectReviewDetail" parameterType="int" resultType="com.co.kr.domain.ReviewListDomain">
     	SELECT rb_seq, smb_id, rb_title, rb_content, rb_create, rb_update
     	FROM shop.review_b
     	WHERE rb_seq = #{rbSeq}
 	</select>
+	
+	<!-- 게시글 수정 -->
+	<update id="updateReview" parameterType="com.co.kr.domain.ReviewListDomain">
+	    UPDATE shop.review_b
+	    SET rb_title = #{rbTitle}, rb_content = #{rbContent}
+	    WHERE rb_seq = #{rbSeq}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteReview" parameterType="int">
+	    DELETE FROM shop.review_b
+	    WHERE rb_seq = #{rbSeq}
+	</delete>
 	
 	
 	
