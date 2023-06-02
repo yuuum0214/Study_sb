@@ -60,6 +60,7 @@ public class ReviewController {
     	return mav;
     }
     
+
 //  수정
   	@RequestMapping("/review/updateReview")
   	public String updateReview(ReviewListDomain reviewListDomain) throws Exception{
@@ -74,5 +75,6 @@ public class ReviewController {
   		return "redirect:/review";
   	}
     
+
     
 }

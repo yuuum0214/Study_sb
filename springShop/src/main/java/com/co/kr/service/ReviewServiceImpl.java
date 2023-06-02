@@ -44,4 +44,5 @@ public class ReviewServiceImpl implements ReviewService{
 		reviewMapper.deleteReview(rbSeq);
 	}
 
+
 }

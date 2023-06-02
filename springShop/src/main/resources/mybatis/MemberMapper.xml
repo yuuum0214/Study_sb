@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.co.kr.mapper.MemberMapper">
+	<select id="smbAllList" resultType="com.co.kr.domain.LoginDomain">
+		SELECT smb_seq, smb_id, smb_pw, smb_level, smb_ip, smb_use, smb_create, smb_update 
+		FROM shop.s_member
+		ORDER BY smb_seq DESC
+	</select>
+</mapper>

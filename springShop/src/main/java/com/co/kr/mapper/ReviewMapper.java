@@ -24,5 +24,6 @@ public interface ReviewMapper {
 		
 	//삭제하기
 	void deleteReview(int rbSeq) throws Exception;
+
 	
 }

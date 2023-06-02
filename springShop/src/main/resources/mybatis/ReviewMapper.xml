@@ -15,6 +15,7 @@
         VALUES (#{rbSeq}, #{rbTitle}, 'admin', #{rbContent}, NOW(), NOW())
     </insert>
     
+
     <!-- 상세 보기 -->
     <select id="selectReviewDetail" parameterType="int" resultType="com.co.kr.domain.ReviewListDomain">
     	SELECT rb_seq, smb_id, rb_title, rb_content, rb_create, rb_update
@@ -34,6 +35,8 @@
 	    DELETE FROM shop.review_b
 	    WHERE rb_seq = #{rbSeq}
 	</delete>
+	
+	
 	
 	
 	

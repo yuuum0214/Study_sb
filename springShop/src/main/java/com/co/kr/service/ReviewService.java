@@ -24,4 +24,5 @@ public interface ReviewService {
 	//게시글 삭제
 	void deleteReview(int rbSeq) throws Exception;
 
+
 }

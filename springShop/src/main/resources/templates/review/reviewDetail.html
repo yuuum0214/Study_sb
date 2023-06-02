@@ -16,6 +16,7 @@
         </div>
         
         <div class="bg-white container-fluid">
+
         	<form id="frm" method="post">
                 <table class="review detail table">
                 <tbody>
@@ -47,6 +48,7 @@
 				  </tr>
                   </tbody>
                 </table>
+
                 <input type="hidden" name="rbSeq" th:value="${reviewListDomain.rbSeq}">
                 </form>
                 
@@ -75,6 +77,13 @@
 								});
 							});
 						</script>
+
+                
+                <div style="text-align:right">
+            	    <button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" onclick="history.go(-1)">목록으로</button>
+    				<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">수정하기</button>
+    				<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">삭제하기</button>
+		    	</div>
             </div>
         
         </div>

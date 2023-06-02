@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net/nz/thymeleaf/layout"
+    layout:decorate="~{layouts/layout}">
+     <head>
+    	<title>AskBoard</title>
+    </head>
+    
+    <body>
+    <div layout:fragment="content">
+
+            <!-- Projects Section-->
+            <section class="py-5">
+                <div class="container px-5 mb-5">
+                    <div class="text-center mb-5">
+                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">회원관리</span></h1>
+                    </div>
+                    <div class="bg-white py-4 mt-auto" >
+						<table class="ask table">
+							<colgroup>
+								<col style="width: 5%"/>
+								<col style="width: 10%"/>
+								<col style="width: 10%"/>
+								<col style="width: 8%"/>
+								<col style="width: 10%"/>
+								<col style="width: 7%"/>
+								<col style="width: 18%"/>
+								<col style="width: 18%"/>
+								<col style="width: 7%"/>
+								<col style="width: 7%"/>								
+							</colgroup>
+							<thead>
+								<tr>
+									<th style="text-align:center">NO</th>
+									<th style="text-align:center">아이디</th>
+									<th style="text-align:center">비밀번호</th>
+									<th style="text-align:center">레벨</th>
+									<th style="text-align:center">가입 ip</th>
+									<th style="text-align:center">사용여부</th>
+									<th style="text-align:center">생성일자</th>
+									<th style="text-align:center">갱신일자</th>
+									<th style="text-align:center">수정</th>
+									<th style="text-align:center">삭제</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="list : ${lists}">
+									<td style="text-align:center" th:text="${list.smbSeq}"></td>
+									<td style="text-align:center" th:text="${list.smbId}"></td>
+									<td style="text-align:center" th:text="${list.smbPw}"></td>
+									<td style="text-align:center" th:text="${list.smbLevel}"></td>
+									<td style="text-align:center" th:text="${list.smbIp}"></td>
+									<td style="text-align:center" th:text="${list.smbUse}"></td>
+									<td style="text-align:center" th:text="${list.smbCreate}"></td>
+									<td style="text-align:center" th:text="${list.smbUpdate}"></td>
+									<td style="text-align:center">
+										<input type="button" id="update" class="btn btn-warning" value="수정">
+									</td>
+									<td style="text-align:center">
+										<input type="button" id="delete" class="btn btn-danger" value="삭제">
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+						
+                    </div>
+                </div>
+            </section>
+
+       <!--  </main>
+    </body> -->
+    </div>
+    </body>
+</html>
