@@ -25,7 +25,6 @@ public class UserServiceImpl implements UserService {
 		userMapper.smbCreate(loginDomain);
 	}
 
-
 	@Override
 	public List<LoginDomain> smbAllList(Map<String, Integer> map) { 
 		return userMapper.smbAllList(map);
