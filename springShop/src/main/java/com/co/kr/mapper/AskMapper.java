@@ -16,4 +16,11 @@ public interface AskMapper {
 	
 	//ask상세보기
 	AskListDomain selectAskDetail(int ibSeq) throws Exception;
+	
+	//ask수정하기
+	void updateAsk(AskListDomain askListDomain) throws Exception;
+	
+	//ask삭제하기
+	void deleteAsk(int ibSeq) throws Exception;
+	
 }

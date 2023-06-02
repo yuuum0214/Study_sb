@@ -63,4 +63,18 @@ public class AskController {
 		return mav;
 	}
 	
+	//문의사항 수정
+	@RequestMapping("/ask/updateAsk")
+	public String updateAsk(AskListDomain askListDomain) throws Exception{
+		askService.updateAsk(askListDomain);
+		return "redirect:/ask";
+	}
+	
+	//문의사항 삭제
+	@RequestMapping("/ask/deleteAsk")
+	public String deleteAsk(int ibSeq) throws Exception{
+		askService.deleteAsk(ibSeq);
+		return "redirect:/ask";
+	}
+	
 }
