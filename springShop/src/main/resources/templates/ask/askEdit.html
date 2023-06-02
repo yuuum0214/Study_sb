@@ -55,9 +55,20 @@
 			    		</table>
    		            	<div style="text-align:center">
             	    		<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" type="submit" id="submit">문의하기</button>
-    						<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" type="reset" id="reset" onclick="history.go(-1)">취소하기</button>
+    						<input type="button" id="reset" value="취소하기" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">
 		    			</div>
-			    	</form>	
+			    	</form>
+			    	
+			    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+					<script type="text/javascript">
+						$(document).ready(function(){
+							$("#reset").on("click", function(){
+								if(confirm("작성을 취소하시겠습니까?")){
+									history.go(-1);
+								}
+							});
+						});
+					</script>
             	</div>
             </div>
         </section> 

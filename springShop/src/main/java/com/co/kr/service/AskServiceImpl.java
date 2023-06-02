@@ -32,4 +32,17 @@ public class AskServiceImpl implements AskService {
 		
 		return askListDomain;
 	}
+	
+	//ask게시글 수정
+	@Override
+	public void updateAsk(AskListDomain askListDomain) throws Exception{
+		askMapper.updateAsk(askListDomain);
+	}
+	
+	//ask게시글 삭제
+	@Override
+	public void deleteAsk(int ibSeq) throws Exception{
+		askMapper.deleteAsk(ibSeq);
+	}
+	
 }
