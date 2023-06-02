@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.co.kr.domain.BoardListDomain;
@@ -19,8 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(value = "/")
 public class ReviewController {
 
-    private static final ReviewListDomain ReviewListDomain = null;
-	@Autowired
+    @Autowired
     private ReviewService reviewService;
     
 //  리뷰
@@ -29,7 +29,7 @@ public class ReviewController {
 		ModelAndView mav = new ModelAndView("/review");
 		
 		List<ReviewListDomain> list = reviewService.selectReviewList();
-		mav.addObject("list", list);
+		mav.addObject("lists", list);
 		
 		return mav; 
 	}
@@ -41,10 +41,23 @@ public class ReviewController {
 	}
     
     
-//   작성된 게시글을 등록하는 주소
+//  작성된 게시글을 등록하는 주소
     @RequestMapping("/review/insertReview")
 	public String insertReview(ReviewListDomain reviewListDomain) throws Exception{
     	reviewService.insertReview(reviewListDomain);
 		return "redirect:/review";
 	}
+    
+//  상세 화면
+    @RequestMapping("review/openReviewDetail")
+    public ModelAndView openReviewDetail(@RequestParam int rbSeq) throws Exception{
+    	ModelAndView mav = new ModelAndView("/review/reviewDetail");
+    	
+    	ReviewListDomain reviewListDomain = reviewService.selectReviewDetail(rbSeq);
+    	mav.addObject("reviewListDomain", reviewListDomain);
+    	
+    	return mav;
+    }
+    
+    
 }

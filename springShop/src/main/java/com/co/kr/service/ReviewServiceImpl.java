@@ -25,5 +25,12 @@ public class ReviewServiceImpl implements ReviewService{
 	public void insertReview(ReviewListDomain reviewListDomain) throws Exception{
 		reviewMapper.insertReview(reviewListDomain);
 	}
+	
+	@Override
+	public ReviewListDomain selectReviewDetail(int rbSeq) throws Exception {
+		ReviewListDomain reviewListDomain = reviewMapper.selectReviewDetail(rbSeq);
+		
+		return reviewListDomain;
+	}
 
 }

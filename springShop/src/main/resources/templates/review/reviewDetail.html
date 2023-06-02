@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net/nz/thymeleaf/layout"
+    layout:decorate="~{layouts/editlayout}">
+     <head>
+     	<meta charset="UTF-8">
+    	<title>reviewWrite</title>
+    </head>
+    
+    <div layout:fragment="content">
+    	<!-- Page Content-->
+        <div class="container px-5 my-5">
+        	<div class="text-center mb-5">
+            	<h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Review</span></h1>
+            </div>
+        </div>
+        
+        <div class="bg-white container-fluid">
+                <table class="review detail table">
+                <tbody>
+                  <tr>
+					<th scope="row" style="text-align:center">NO</th>
+					<td th:text="${reviewListDomain.rbSeq}"></td>
+					<th scope="row" style="text-align:center">작성일</th>
+					<td th:text="${reviewListDomain.rbCreate}"></td>
+				  </tr>
+				  
+				  <tr>
+					<th scope="row" style="text-align:center">작성자</th>
+					<td th:text="${reviewListDomain.smbId}"></td>
+					<th scope="row" style="text-align:center">수정일</th>
+					<td th:text="${reviewListDomain.rbUpdate}"></td>
+				  </tr>
+				  
+				  <tr>
+				  <th scope="row" style="text-align:center">제목</th>
+					<td colspan="3">
+						<input type="text" id="rbTitle" name="rbTitle" style="border:none" th:value="${reviewListDomain.rbTitle}"></input>
+					</td>
+				  </tr>
+				  
+				  <tr>
+					<td colspan="4" class="view_text"  style="text-align:center">
+						<textarea title="내용" id="rbContent" name="rbContent" style="border: none" cols="120" rows="15" th:text="${reviewListDomain.rbContent}"></textarea>
+					</td>
+				  </tr>
+                  </tbody>
+                </table>
+                
+                <div style="text-align:right">
+            	    <button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" onclick="history.go(-1)">목록으로</button>
+    				<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">수정하기</button>
+    				<button class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">삭제하기</button>
+		    	</div>
+            </div>
+        
+        </div>
+    
+</html>
