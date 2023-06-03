@@ -15,8 +15,32 @@
                     <div class="text-center mb-5">
                         <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">회원관리</span></h1>
                     </div>
+                    
+					<div class="container px-5 mb-5">
+						<div class="bg-white py-4 mt-auto">
+							<table class="member insert" style="margin:auto;">
+								<colgroup>
+									<col style="width: 10%"/>
+									<col style="width: 35%"/>
+									<col style="width: 10%"/>
+									<col style="width: 35%"/>
+									<col style="width: 10%"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>ID : </th>
+										<th><input type="text"></th>
+										<th>PW : </th>
+										<th><input type="text"></th>
+										<th><input type="button" class="btn btn-success" value="추가"></th>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					               
                     <div class="bg-white py-4 mt-auto" >
-						<table class="ask table">
+						<table class="member table">
 							<colgroup>
 								<col style="width: 5%"/>
 								<col style="width: 10%"/>
@@ -43,6 +67,7 @@
 									<th style="text-align:center">삭제</th>
 								</tr>
 							</thead>
+
 							<tbody>
 								<tr th:each="list : ${lists}">
 									<td style="text-align:center" th:text="${list.smbSeq}"></td>
