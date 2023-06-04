@@ -1,11 +1,9 @@
 package com.co.kr.domain;
 
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
+@Data
 @Builder(builderMethodName="builder")
 public class LoginDomain {
 	
@@ -17,5 +15,5 @@ public class LoginDomain {
 	private String smbUse;
 	private String smbCreate;
 	private String smbUpdate;
-
+	
 }

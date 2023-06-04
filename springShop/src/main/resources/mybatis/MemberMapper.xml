@@ -16,9 +16,17 @@
     </insert>
 	
 	<!-- 멤버의 사용여부 수정 -->
-	
+	<update id="updateMember" parameterType="com.co.kr.domain.LoginDomain">
+		UPDATE shop.s_member
+		SET smb_use = #{smbUse}, smb_update = Now()
+		WHERE smb_seq = #{smbSeq}
+	</update>
 	
 	<!-- 멤버 삭제 -->
+	<delete id="deleteMember" parameterType="int">
+		DELETE FROM shop.s_member
+		WHERE smb_seq = #{smbSeq}
+	</delete>
 	
 	
 	

@@ -23,6 +23,7 @@
 					</div>
                     
                     <div class="bg-white py-4 mt-auto" >
+                    	<form id="frm" method="post">
 						<table class="member table">
 							<colgroup>
 								<col style="width: 5%"/>
@@ -58,20 +59,54 @@
 									<td style="text-align:center" th:text="${list.smbPw}"></td>
 									<td style="text-align:center" th:text="${list.smbLevel}"></td>
 									<td style="text-align:center" th:text="${list.smbIp}"></td>
-									<td style="text-align:center" th:text="${list.smbUse}"></td>
+									<td style="text-align:center">
+										<textarea title="사용여부" name="smbUse" style="border:none;" th:text="${list.smbUse}" rows="1px" cols="4px" maxlength="4"></textarea>
+									</td>
 									<td style="text-align:center" th:text="${list.smbCreate}"></td>
 									<td style="text-align:center" th:text="${list.smbUpdate}"></td>
 									<td style="text-align:center">
-										<input type="button" id="updateMem" class="btn btn-warning" value="수정">
+										<input type="button" id="updateMember" class="btn btn-warning" value="수정">
 									</td>
 									<td style="text-align:center">
-										<input type="button" id="deleteMem" class="btn btn-danger" value="삭제">
+										<input type="button" id="deleteMember" class="btn btn-danger" value="삭제">
 									</td>
 								</tr>
 
 							</tbody>
 						</table>
+<!-- 						<input type="hidden" name="smbSeq" value="${loginDomain.smbSeq}"> -->
+						</form>
 						
+						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+						<script type="text/javascript">
+							$(document).ready(function(){
+								$("#updateMember").on("click", function(){
+								    if(confirm("수정하시겠습니까?")){
+								        var updateMember = $(this).closest("tr").find("textarea[name='smbUse']").val();
+								        updateMember = updateMember.toUpperCase(); // 대문자 변경
+								        
+								        if (updateMember === 'Y' || updateMember === 'N') {
+								          // 유효한 값인 경우 서버로 데이터 전송
+								          var smbSeq = $(this).closest("tr").find("td:eq(0)").text();
+								          var frm = $("#frm")[0];
+								          frm.action = "member/updateMember?smbSeq=" + smbSeq;
+								          frm.submit();
+								        } else {
+								          // 유효하지 않은 값인 경우 경고 메시지 표시
+								          alert('유효한 값(Y 또는 N)을 입력해주세요.');
+								        }
+								    }
+								});
+							    $("#deleteMember").on("click", function(){
+								    if(confirm("삭제하시겠습니까?")){
+								        var smbSeq = $(this).closest("tr").find("td:eq(0)").text(); // 삭제 버튼이 클릭된 행의 smbSeq 값을 가져옴
+								        var frm = $("#frm")[0];
+								        frm.action = "member/deleteMember?smbSeq=" + smbSeq; // URL에 smbSeq 값을 추가하여 삭제 요청을 보냄
+								        frm.submit();
+								    }
+								});
+							});
+						</script>
                     </div>
                 </div>
             </section>
