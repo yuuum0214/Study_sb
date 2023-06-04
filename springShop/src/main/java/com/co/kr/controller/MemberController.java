@@ -60,13 +60,7 @@ public class MemberController {
 		return "redirect:/member";
 	}
 	
-	/*
 	//멤버 사용여부 수정
-	@RequestMapping("/member/updateMember")
-	public String updateMember(LoginDomain loginDomain) throws Exception{
-		memberService.updateMember(loginDomain);
-		return "redirect:/member";
-	}*/
 	@RequestMapping("/member/updateMember")
 	public String updateMember(@RequestParam("smbSeq") int smbSeq, @RequestParam("smbUse") String smbUse) throws Exception {
 	    String firstCharacter = smbUse.substring(0, 1); // 입력값의 맨 앞 문자 추출
@@ -76,9 +70,10 @@ public class MemberController {
 	        .build();
 	    memberService.updateMember(loginDomain);
 	    return "redirect:/member";
-	}
+	}// 멤버 사용여부 수정
 
-	
+
+
 	//멤버 삭제
 	@RequestMapping("/member/deleteMember")
 	public String deleteMember(int smbSeq) throws Exception{

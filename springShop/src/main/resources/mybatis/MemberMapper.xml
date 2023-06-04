@@ -26,6 +26,7 @@
 	<delete id="deleteMember" parameterType="int">
 		DELETE FROM shop.s_member
 		WHERE smb_seq = #{smbSeq}
+		ORDER BY smb_seq DESC
 	</delete>
 	
 	
