@@ -25,4 +25,21 @@ public class MemberServiceImpl implements MemberService{
 		memberMapper.insertMember(loginDomain);
 	}
 	
+	//멤버 사용여부 수정
+	@Override
+	public void updateMember(LoginDomain loginDomain) throws Exception{
+		memberMapper.updateMember(loginDomain);
+	}
+	
+	@Override
+	public void deleteMember(int smbSeq) throws Exception{
+		memberMapper.deleteMember(smbSeq);
+	}
+
+	@Override
+	public void deleteMember(LoginDomain loginDomain) throws Exception {
+	    memberMapper.deleteMember(loginDomain.getSmbSeq());
+	}
+
+
 }
