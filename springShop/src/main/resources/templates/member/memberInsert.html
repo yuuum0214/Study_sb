@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net/nz/thymeleaf/layout"
+    layout:decorate="~{layouts/editlayout}">
+     <head>
+    	<title>AskBoard</title>
+    </head>
+    
+    <body>
+    <div layout:fragment="content">
+
+            <!-- Projects Section-->
+            <section class="py-5">
+                <div class="container px-5 mb-5">
+                    <div class="text-center mb-5">
+                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">회원관리</span></h1>
+                    </div>
+                    
+					<div class="container px-5 mb-5">
+						<div class="bg-success py-4 mt-auto text-white">
+			            	<form id="frm" name="frm" method="post" action="/member/insertMember">
+							
+							<table class="member insert" style="margin:auto;">
+								<colgroup>
+									<col style="width: 10%"/>
+									<col style="width: 35%"/>
+									<col style="width: 10%"/>
+									<col style="width: 35%"/>
+									<col style="width: 10%"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>ID :</th>
+										<th><input type="text" id="newId"></th>
+										<th>PW :</th>
+										<th><input type="text" id="newPw"></th>
+										<th><button id=insertMember class="btn btn-outline-light">추가</button></th>
+											
+									</tr>
+									<tr>
+										<th>
+											<input type="hidden" id="smbLevel" value="2" />
+											<input type="hidden" id="smbIp" value="127.0.0.1"/>
+											<input type="hidden" id="smbUse" value="Y" />
+										</th>
+									</tr>
+								</tbody>
+							</table>
+							
+							</form>
+						</div>
+					</div>
+                </div>
+            </section>
+
+       <!--  </main>
+    </body> -->
+    </div>
+    </body>
+</html>

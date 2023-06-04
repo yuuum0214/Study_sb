@@ -8,4 +8,6 @@ public interface MemberService {
 
 	List<LoginDomain> smbAllList() throws Exception;
 	
+	//멤버 추가
+	void insertMember(LoginDomain loginDomain) throws Exception;
 }

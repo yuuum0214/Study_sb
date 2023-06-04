@@ -10,4 +10,7 @@ import com.co.kr.domain.LoginDomain;
 public interface MemberMapper {
 
 	List<LoginDomain> smbAllList() throws Exception;
+
+	//멤버 추가
+	void insertMember(LoginDomain loginDomain) throws Exception;
 }

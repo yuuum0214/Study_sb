@@ -19,5 +19,10 @@ public class MemberServiceImpl implements MemberService{
 		return memberMapper.smbAllList();
 	}
 	
+	//멤버 추가
+	@Override
+	public void insertMember(LoginDomain loginDomain) throws Exception{
+		memberMapper.insertMember(loginDomain);
+	}
 	
 }
