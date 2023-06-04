@@ -16,29 +16,12 @@
                         <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">회원관리</span></h1>
                     </div>
                     
-					<div class="container px-5 mb-5">
-						<div class="bg-white py-4 mt-auto">
-							<table class="member insert" style="margin:auto;">
-								<colgroup>
-									<col style="width: 10%"/>
-									<col style="width: 35%"/>
-									<col style="width: 10%"/>
-									<col style="width: 35%"/>
-									<col style="width: 10%"/>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th>ID : </th>
-										<th><input type="text"></th>
-										<th>PW : </th>
-										<th><input type="text"></th>
-										<th><input type="button" class="btn btn-success" value="추가"></th>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+                    <div style="margin:right; text-align:right;">
+						<a href="member/memberInsert">
+							<input type="button" id="insertMember" class="btn btn-success" value="멤버추가">
+						</a>
 					</div>
-					               
+                    
                     <div class="bg-white py-4 mt-auto" >
 						<table class="member table">
 							<colgroup>
@@ -79,10 +62,10 @@
 									<td style="text-align:center" th:text="${list.smbCreate}"></td>
 									<td style="text-align:center" th:text="${list.smbUpdate}"></td>
 									<td style="text-align:center">
-										<input type="button" id="update" class="btn btn-warning" value="수정">
+										<input type="button" id="updateMem" class="btn btn-warning" value="수정">
 									</td>
 									<td style="text-align:center">
-										<input type="button" id="delete" class="btn btn-danger" value="삭제">
+										<input type="button" id="deleteMem" class="btn btn-danger" value="삭제">
 									</td>
 								</tr>
 
