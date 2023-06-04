@@ -13,7 +13,7 @@
             <section class="py-5">
                 <div class="container px-5 mb-5">
                     <div class="text-center mb-5">
-                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">회원관리</span></h1>
+                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">회원관리 : 회원추가</span></h1>
                     </div>
                     
 					<div class="container px-5 mb-5">
@@ -22,32 +22,34 @@
 							
 							<table class="member insert" style="margin:auto;">
 								<colgroup>
-									<col style="width: 10%"/>
+									<col style="width: 5%"/>
+									<col style="width: 35%"/>
+									<col style="width: 5%"/>
 									<col style="width: 35%"/>
 									<col style="width: 10%"/>
-									<col style="width: 35%"/>
 									<col style="width: 10%"/>
 								</colgroup>
 								<tbody>
 									<tr>
 										<th>ID :</th>
-										<th><input type="text" id="newId"></th>
+										<th><input type="text" id="smbId" name="smbId"></th>
 										<th>PW :</th>
-										<th><input type="text" id="newPw"></th>
+										<th><input type="text" id="smbPw" name="smbPw"></th>
 										<th><button id=insertMember class="btn btn-outline-light">추가</button></th>
-											
+										<th><input type="button" id="reset" value="취소" class="btn btn-outline-light" onclick="history.go(-1)"></th>
 									</tr>
 									<tr>
 										<th>
-											<input type="hidden" id="smbLevel" value="2" />
-											<input type="hidden" id="smbIp" value="127.0.0.1"/>
-											<input type="hidden" id="smbUse" value="Y" />
+											<input type="hidden" id="smbLevel" name="smbLevel" value="2" />
+											<input type="hidden" id="smbIp" name="smbIp" value="127.0.0.1"/>
+											<input type="hidden" id="smbUse" name="smbUse" value="Y" />
 										</th>
 									</tr>
 								</tbody>
 							</table>
 							
 							</form>
+		
 						</div>
 					</div>
                 </div>

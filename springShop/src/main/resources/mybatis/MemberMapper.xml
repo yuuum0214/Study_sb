@@ -11,8 +11,8 @@
 	
 	<!-- 멤버 추가 -->
     <insert id="insertMember" parameterType="com.co.kr.domain.LoginDomain">
-        INSERT INTO shop.s_member (smb_id, smb_pw, smb_level, smb_ip, smb_use, smb_create, smb_update)
-        VALUES (#{smbId}, #{smbPw}, #{smbLevel}, #{smbIp}, #{smbUse}, Now(), Now())
+        INSERT INTO shop.s_member (smb_seq, smb_id, smb_pw, smb_level, smb_ip, smb_use, smb_create, smb_update)
+        VALUES (#{smbSeq}, #{smbId}, #{smbPw}, #{smbLevel}, '127.0.0.1', #{smbUse}, Now(), Now())
     </insert>
 	
 	<!-- 멤버의 사용여부 수정 -->
