@@ -23,6 +23,22 @@ public interface ReviewService {
 		
 	//게시글 삭제
 	void deleteReview(int rbSeq) throws Exception;
+	
+	
+	// 인서트 및 업데이트
+	/*public int fileProcess(FileListVO fileListVO, MultipartHttpServletRequest request, HttpServletRequest httpReq);
+			
+	// 하나 삭제
+	public void rbContentRemove(HashMap<String, Object> map);
+			
+	// 하나 삭제
+	public void rbFileRemove(ReviewFileDomain reviewFileDomain);
+
+	// 하나 리스트 조회
+	public ReviewListDomain boardSelectOne(HashMap<String, Object> map);
+		
+	// 하나 파일 리스트 조회
+	public List<ReviewFileDomain> boardSelectOneFile(HashMap<String, Object> map);*/
 
 
 }

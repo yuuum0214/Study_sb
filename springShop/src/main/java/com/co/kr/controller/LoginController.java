@@ -2,6 +2,7 @@ package com.co.kr.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.co.kr.domain.LoginDomain;
+import com.co.kr.domain.ReviewListDomain;
+import com.co.kr.service.ReviewService;
 import com.co.kr.service.UserService;
 import com.co.kr.util.CommonUtils;
 import com.co.kr.vo.LoginVO;
@@ -32,6 +35,9 @@ public class LoginController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ReviewService reviewService;
 	
 	@GetMapping("/login")
     public String login() {
@@ -56,7 +62,7 @@ public class LoginController {
             String alertText = "없는 아이디이거나 패스워드가 잘못되었습니다. 가입해주세요";
             String redirectPath = "/signin";
             CommonUtils.redirect(alertText, redirectPath, response);
-            return "login.html";
+            return "redirect:/login";
         }
 
         // 현재아이피 추출
@@ -67,7 +73,7 @@ public class LoginController {
         session.setAttribute("id", loginDomain.getSmbId());
         session.setAttribute("smbLevel", loginDomain.getSmbLevel());
 
-//        List<BoardListDomain> items = uploadService.boardList();
+//        List<ReviewListDomain> items = reviewService.selectReviewList();
 //        System.out.println("items ==> " + items);
         // 모델에 items 추가
 //        model.addAttribute("items", items);
