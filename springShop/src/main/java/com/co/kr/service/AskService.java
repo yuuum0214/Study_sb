@@ -2,7 +2,12 @@ package com.co.kr.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.co.kr.domain.AskListDomain;
+import com.co.kr.vo.AskFileListVO;
 
 public interface AskService {
 
@@ -20,4 +25,6 @@ public interface AskService {
 	//게시글 삭제
 	void deleteAsk(int ibSeq) throws Exception;
 	
+	//파일 입력
+	public int fileProcess(AskFileListVO askFileListVO, MultipartHttpServletRequest request, HttpServletRequest httpReq);
 }
