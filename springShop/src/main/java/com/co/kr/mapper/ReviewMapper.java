@@ -24,6 +24,17 @@ public interface ReviewMapper {
 		
 	//삭제하기
 	void deleteReview(int rbSeq) throws Exception;
+	
+	
+	//select one file
+	/*	public List<ReviewFileDomain> boardSelectOneFile(HashMap<String, Object> map);
+
+		public void rbContentRemove(HashMap<String, Object> map);
+
+		public void rbContentUpdate(ReviewContentDomain reviewContentDomain);
+
+		public void contentUpload(ReviewContentDomain reviewContentDomain); */
+	
 
 	
 }
