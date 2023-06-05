@@ -87,6 +87,14 @@
 		    <version>2.0.7</version>
 		</dependency>
 		
+		
+		 <!-- 로깅 라이브러리 -->
+  <dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.2.5</version>
+  </dependency>
+		
 		<dependency>
    <groupId>org.springframework.boot</groupId>
    <artifactId>spring-boot-devtools</artifactId>

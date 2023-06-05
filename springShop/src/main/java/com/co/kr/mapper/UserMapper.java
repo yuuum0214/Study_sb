@@ -13,8 +13,6 @@ public interface UserMapper {
 	//전체 리스트 조회
     public LoginDomain smbSelectList(Map<String, String> map);
     
-    //신규 저장
-    public void smbCreate(LoginDomain loginDomain);
     
     //전체데이터
     public List<LoginDomain> smbAllList(Map<String, Integer> map);
@@ -24,14 +22,11 @@ public interface UserMapper {
     
     //id 정보 가져오기
     public LoginDomain smbGetId(Map<String, String> map);
+
+
+	public int smbDuplicationCheck(Map<String, String> map);
     
-    //중복체크
-    public int smbDuplicationCheck(Map<String, String> map);
-    
-    //업데이트
-    public void smbUpdate(LoginDomain loginDomain);
-    
-    //삭제
-    public void smbRemove(Map<String, String> map);
+
+   
     
 }
