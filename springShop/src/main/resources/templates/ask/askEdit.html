@@ -30,8 +30,14 @@
 	            
 	            	<form id="frm" name="frm" method="post" enctype="multipart/form-data" action="/ask/insertAsk">
 	            		<table class="ask_Edit" style="margin-left:50px">
+	            			<tr>
+	            			
+	            				<td><h5><b>작성자 : &nbsp;</b></h5></td>
+	            				<td><h5><b>[&nbsp;<span th:text=${session.id}></span>&nbsp;]</b></h5></td>
+	            				<td><input type="hidden" th:value="${session.id}" id="smbId" name="smbId"></td>
+		        			</tr>
 		        			<tr>
-				    			<td><h5><b>문의 분류</b></h5></td>
+				    			<td><h5><b>문의 분류&nbsp;</b></h5></td>
 				    			<td colspan="4">
 			    					<select id="cType" name="cType" style="width:250px">
 			    						<option value="1">상품 주문</option>
@@ -41,17 +47,17 @@
 			    				</td>
 				    		</tr>
 		    				<tr>
-				    			<td><h5><b>문의 제목</b></h5></td>
+				    			<td><h5><b>문의 제목&nbsp;</b></h5></td>
 			    				<td colspan="4">
 				    				<input type="text" id="ibTitle" name="ibTitle" style="width:500px" placeholder="제목" required/>
 				    			</td>
 				    		</tr>
 				    		<tr>
-				    			<td><h5><b>파일 첨부</b></h5>
+				    			<td><h5><b>파일 첨부&nbsp;</b></h5>
 				    			<td><input type="file" id="file" name="file" multiple /></td>
 				    		</tr>
 				    		<tr>
-				    			<td style="vertical-align:top"><h5><b>문의 내용</b></h5></td>
+				    			<td style="vertical-align:top"><h5><b>문의 내용&nbsp;</b></h5></td>
 				    			<td colspan="4"><textarea id="ibContent" name="ibContent" cols="120" rows="15"></textarea></td>
 				    		</tr>
 			    		</table>
