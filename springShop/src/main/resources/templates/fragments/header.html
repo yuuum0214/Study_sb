@@ -12,20 +12,27 @@
 		                <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
 		                <li class="nav-item"><a class="nav-link" th:href="@{review}">리뷰</a></li>
 		                <li class="nav-item"><a class="nav-link" th:href="@{ask}">문의사항</a></li>
-		                <li class="nav-item"><a class="nav-link" th:href="@{login}">로그인</a></li>
+		                <th:block th:if="${session.id} == null" >
+		                	<li class="nav-item"><a class="nav-link" th:href="@{login}">로그인</a></li>
+		                </th:block>
 		                <th:block th:if="${session.smbLevel}==3">
 			                <li class="nav-item"><a class="nav-link" th:href="@{member}">회원관리</a></li>
 			            </th:block>
 	            	</ul>
 	        	</div>
+	  			<div  class="userInfo small fw-bolder" th:if=${session.id}>
+    				<span th:text="${session.id}"></span><span> 님 / </span>
+    				<span th:text="${session.smbLevel}"></span><span> 레벨</span>
+	    			<a th:href="@{logout}" style="color: black; ">
+    					<input type="button" style="color: black" value="로그아웃">
+	    			</a>
+<!-- 
+    				<button type="button">
+        				<a th:href="@{logout}" style="color: black; ">로그아웃</a>
+    				</button> -->
+				</div>
   			</div>	
-  			<div  class="userInfo" th:if=${session.id}>
-    			<span th:text="${session.id}"></span><span> 님 / </span>
-    			<span th:text="${session.smbLevel}"></span><span> 레벨</span>
-    			<button type="button">
-        			<a th:href="@{logout}" style="color: black; ">로그아웃</a>
-    			</button>
-			</div>
+
 		</nav>
 	</header>	
 </html>
