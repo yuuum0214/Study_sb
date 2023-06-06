@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.co.kr.domain.AskFileDomain;
 import com.co.kr.domain.AskListDomain;
 
 @Mapper
@@ -23,4 +24,6 @@ public interface AskMapper {
 	//ask삭제하기
 	void deleteAsk(int ibSeq) throws Exception;
 	
+	//ask File 추가
+	public void askFileUpload(AskFileDomain askFileDomain);
 }

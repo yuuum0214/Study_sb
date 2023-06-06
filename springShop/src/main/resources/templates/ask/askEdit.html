@@ -30,6 +30,8 @@
 	            
 	            	<form id="frm" name="frm" method="post" enctype="multipart/form-data" action="/ask/insertAsk">
 	            		<table class="ask_Edit" style="margin-left:50px">
+	            		<!-- th:text="${askListDomain.smbId}" -->
+		        			<td><input type="hidden" id="smbId" name="smbId" th:if=${session.id}></td>
 		        			<tr>
 				    			<td><h5><b>문의 분류</b></h5></td>
 				    			<td colspan="4">

@@ -1,6 +1,6 @@
 package com.co.kr.domain;
 
-import groovy.transform.builder.Builder;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
@@ -12,6 +12,6 @@ public class AskFileDomain {
 	private String ibOrigFile;
 	private String ibNewFile;
 	private String ibFilePath;
-	private String ibFileSize;
+	private Integer ibFileSize;
 
 }

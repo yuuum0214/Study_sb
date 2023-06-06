@@ -7,7 +7,7 @@ import lombok.Data;
 @Builder(builderMethodName="builder")
 public class AskListDomain {
 
-	private String ibSeq;
+	private Integer ibSeq;
 	private String cType;
 	private String ibTitle;
 	private String smbId;

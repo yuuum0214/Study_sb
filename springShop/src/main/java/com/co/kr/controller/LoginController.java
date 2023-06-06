@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.co.kr.domain.AskListDomain;
 import com.co.kr.domain.LoginDomain;
 import com.co.kr.domain.ReviewListDomain;
+import com.co.kr.service.AskService;
 import com.co.kr.service.ReviewService;
 import com.co.kr.service.UserService;
 import com.co.kr.util.CommonUtils;
@@ -37,6 +39,14 @@ public class LoginController {
 	
 	@Autowired
 	private ReviewService reviewService;
+	
+	@Autowired
+	private AskService askService;
+	
+	@GetMapping("/signup")
+	public String signup() {
+		return "signup.html";
+	}
 	
 	@GetMapping("/login")
     public String showLogin() {
@@ -79,8 +89,6 @@ public class LoginController {
 		List<ReviewListDomain> lists = reviewService.selectReviewList();
 		System.out.println("lists ==> "+ lists);
 		mav.addObject("lists", lists);
-		
-		mav.setViewName("/review/insertReview"); 
 
 		return "redirect:/"; // 로그인 성공 시 홈 페이지로 리다이렉트
 	}
