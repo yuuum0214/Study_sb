@@ -67,8 +67,12 @@
 						
 						<div style="text-align:right">
             	    		<input type="button" id="list" value="목록으로" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" onclick="history.go(-1)">
-    						<input type="button" id="edit" value="수정하기" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">
-    						<input type="button" id="delete" value="삭제하기" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">
+			                <th:block th:if="${session.id}==${askListDomain.smbId}">
+    							<input type="button" id="edit" value="수정하기" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">
+    						</th:block>
+    						<th:block th:if="${session.id}==${askListDomain.smbId} or ${session.id}=='admin'">
+    							<input type="button" id="delete" value="삭제하기" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">
+		    				</th:block>
 		    			</div>
 						
 						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
