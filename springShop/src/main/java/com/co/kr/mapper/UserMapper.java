@@ -27,6 +27,8 @@ public interface UserMapper {
 	public int smbDuplicationCheck(Map<String, String> map);
     
 
+	//회원가입
+	void openSignup(LoginDomain loginDomain) throws Exception;
    
     
 }

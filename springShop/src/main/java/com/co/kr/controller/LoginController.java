@@ -103,6 +103,22 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
+	
+	// id,pw 작성
+	@RequestMapping("/signup")
+	public String signupWrite() throws Exception{
+		return "signup";
+	}
+	
+	// 회원가입 작성 후 이동
+	@PostMapping("/signup")
+	public String openSignup(LoginDomain loginDomain) throws Exception{
+		userService.openSignup(loginDomain);
+		return "redirect:/login";
+	}
+	
+	
+	
 }
 
 

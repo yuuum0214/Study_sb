@@ -44,6 +44,11 @@ public class ReviewServiceImpl implements ReviewService{
 		reviewMapper.deleteReview(rbSeq);
 	}
 	
+	@Override
+	public int ReviewSeq() {
+		return reviewMapper.ReviewSeq();
+	}
+	
 	
 	/*	@Override
 	public int fileProcess(FileListVO fileListVO, MultipartHttpServletRequest request, HttpServletRequest httpReq) {

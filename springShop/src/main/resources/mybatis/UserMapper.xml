@@ -28,4 +28,11 @@
     <select id="smbGetId" resultType="com.co.kr.domain.LoginDomain" parameterType="java.util.Map">
         SELECT * FROM shop.s_member WHERE smb_id = #{smbId}
     </select>
+    
+    
+    <!-- 회원가입 -->
+	<insert id="openSignup" parameterType="com.co.kr.domain.LoginDomain">
+		INSERT INTO shop.s_member (smb_seq, smb_id, smb_pw, smb_level, smb_ip, smb_use, smb_create, smb_update)
+    	VALUES (#{smbSeq}, #{smbId}, #{smbPw}, #{smbLevel}, '127.0.0.1', #{smbUse}, NOW(), NOW())
+	</insert>
 </mapper>
