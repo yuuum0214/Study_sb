@@ -8,6 +8,8 @@
     
     <body>
     <div layout:fragment="content">
+    
+    
    
             <!-- Page Content-->
             <div class="container px-5 my-5">
@@ -20,7 +22,7 @@
         <div class="bg-white container-fluid">
             <div class="row">
                 <table class="review table">
-             
+             <th:block th:if="${lists}">
             <colgroup>
                 <col style="width: 5%"/>
                 <col style="width: 50%"/>
@@ -51,6 +53,7 @@
 						<td style="text-align:center" th:text="${list.rbCreate}"></td>
 						<td style="text-align:center" th:text="${list.rbUpdate}"></td>
 					</tr>
+					</th:block>
                 </tbody>
                 </table>
                 

@@ -17,6 +17,13 @@
 	            	</ul>
 	        	</div>
   			</div>	
+  			<div  class="userInfo" th:if=${session.id}>
+    			<span th:text="${session.id}"></span><span> 님 / </span>
+    			<span th:text="${session.smbLevel}"></span><span> 레벨</span>
+    			<button type="button">
+        			<a th:href="@{logout}" style="color: black; ">로그아웃</a>
+    			</button>
+			</div>
 		</nav>
 	</header>	
 </html>

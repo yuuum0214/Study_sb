@@ -1,6 +1,5 @@
 package com.co.kr.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +35,14 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private ReviewService reviewService;
+	
+	@GetMapping("/signup")
+	public String signup() {
+		return "signup.html";
+	}
+	
 	@GetMapping("/login")
     public String showLogin() {
     	return "login.html";
@@ -44,12 +51,13 @@ public class LoginController {
 	
 
 	@PostMapping(value = "/login")
-	public String login(LoginVO loginDTO, HttpServletRequest request, Model model) throws IOException {
+	public String login(LoginVO loginDTO, HttpServletRequest request, Model model) throws Exception {
 
 		log.info("login method called");
 
 		// session 처리
 		HttpSession session = request.getSession();
+		ModelAndView mav = new ModelAndView();
 		// 중복체크
 		Map<String, String> map = new HashMap<>();
 		map.put("smbId", loginDTO.getId());
@@ -72,6 +80,12 @@ public class LoginController {
 		session.setAttribute("ip", IP);
 		session.setAttribute("id", loginDomain.getSmbId());
 		session.setAttribute("smbLevel", loginDomain.getSmbLevel());
+		
+		List<ReviewListDomain> lists = reviewService.selectReviewList();
+		System.out.println("lists ==> "+ lists);
+		mav.addObject("lists", lists);
+		
+		mav.setViewName("/review/insertReview"); 
 
 		return "redirect:/"; // 로그인 성공 시 홈 페이지로 리다이렉트
 	}
