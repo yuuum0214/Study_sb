@@ -21,19 +21,27 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6">
                     
-                    <a href="/login"></a>
-                    <form id="signupForm" data-sb-form-api-token="API_TOKEN" role="form" action="/signup" method="post">
+                   
+                    <form id="signupForm" role="form" action="/signup" method="post">
                     <div class="form-floating mb-3">
-                                <input class="form-control" id="username" type="text" name="id" placeholder="Enter your username..." data-sb-validations="required" />
+                                <input class="form-control" id="username" type="text" name="smbId" placeholder="Enter your username..." data-sb-validations="required" />
                                 <label for="username">Username</label>
                             </div>
                             <!-- Password input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="password" type="password" name="pw" placeholder="Enter your password..." data-sb-validations="required" />
+                                <input class="form-control" id="password" type="password" name="smbPw" placeholder="Enter your password..." data-sb-validations="required" />
                                 <label for="password">Password</label>
                             </div>
                             
+                            <th>
+								<input type="hidden" id="smbLevel" name="smbLevel" value="2" />
+								<input type="hidden" id="smbIp" name="smbIp" value="127.0.0.1"/>
+								<input type="hidden" id="smbUse" name="smbUse" value="Y" />
+							</th>
+                            
                             <div class="d-grid"><button class="btn btn-primary" id="submitButton" type="submit">SINGUP</button></div>
+                            
+                            <div id="warningMessage" class="text-danger" style="display: none;">이미 사용중인 id입니다. 다른 id로 입력해주세요</div>
                     </form>
                     </div>
                 </div>

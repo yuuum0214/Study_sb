@@ -29,6 +29,9 @@ public interface UserMapper {
 
 	//회원가입
 	void openSignup(LoginDomain loginDomain) throws Exception;
+
+
+	int countUserById(String id);
    
     
 }
