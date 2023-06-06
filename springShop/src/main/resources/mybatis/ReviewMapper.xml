@@ -5,14 +5,15 @@
 
 	<!--select all-->
 	<select id="selectReviewList" resultType="com.co.kr.domain.ReviewListDomain">
-	  SELECT rb_seq, smb_id, rb_title, rb_content, rb_create, rb_update
-	  FROM shop.review_b order by rb_update desc
+		SELECT *
+    	FROM shop.review_b
+    	ORDER BY rb_seq ASC
 	</select>
 	
 	<!-- insert문 -->
 	<insert id="insertReview" parameterType="com.co.kr.domain.ReviewListDomain">
         INSERT INTO shop.review_b (rb_seq, rb_title, smb_id, rb_content, rb_create, rb_update)
-        VALUES (#{rbSeq}, #{rbTitle}, #{smbId}, #{rbContent}, NOW(), NOW())
+        VALUES (#{rbSeq}, #{rbTitle}, 'admin', #{rbContent}, NOW(), NOW())
     </insert>
     
 
@@ -26,9 +27,10 @@
 	<!-- 게시글 수정 -->
 	<update id="updateReview" parameterType="com.co.kr.domain.ReviewListDomain">
 	    UPDATE shop.review_b
-	    SET rb_title = #{rbTitle}, rb_content = #{rbContent}
+	    SET rb_title = #{rbTitle}, rb_update = Now()
 	    WHERE rb_seq = #{rbSeq}
 	</update>
+	
 	
 	<!-- 게시글 삭제 -->
 	<delete id="deleteReview" parameterType="int">
@@ -36,6 +38,14 @@
 	    WHERE rb_seq = #{rbSeq}
 	</delete>
 	
+	<!-- 삭제 후 rb_seq -->
+	<select id="ReviewSeq" resultType="int">
+    	SELECT COALESCE((SELECT MIN(seq + 1) FROM (
+        	SELECT 0 AS seq
+        	UNION ALL
+        	SELECT rb_seq FROM shop.review_b
+    	) AS t1 WHERE seq + 1 NOT IN (SELECT rb_seq FROM shop.review_b)), 1) AS rbSeq
+	</select>
 	
 	
 	

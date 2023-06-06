@@ -45,6 +45,11 @@ public class ReviewController {
 //  작성된 게시글을 등록하는 주소
     @RequestMapping("/review/insertReview")
 	public String insertReview(ReviewListDomain reviewListDomain) throws Exception{
+    	
+//    	삭제 후 rb_seq와 중복되지 않는 가장 작은 수 생성
+    	int minReviewSeq = reviewService.ReviewSeq();
+    	reviewListDomain.setRbSeq(minReviewSeq);
+    	
     	reviewService.insertReview(reviewListDomain);
 		return "redirect:/review";
 	}
@@ -74,6 +79,8 @@ public class ReviewController {
   		reviewService.deleteReview(rbSeq);
   		return "redirect:/review";
   	}
+  	
+  	
     
 
     

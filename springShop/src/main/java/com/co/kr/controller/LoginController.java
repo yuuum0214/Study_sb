@@ -38,11 +38,6 @@ public class LoginController {
 	@Autowired
 	private ReviewService reviewService;
 	
-	@GetMapping("/signup")
-	public String signup() {
-		return "signup.html";
-	}
-	
 	@GetMapping("/login")
     public String showLogin() {
     	return "login.html";
@@ -99,6 +94,22 @@ public class LoginController {
 		}
 		return "redirect:/";
 	}
+	
+	
+	// id,pw 작성
+	@RequestMapping("/signup")
+	public String signupWrite() throws Exception{
+		return "signup";
+	}
+	
+	// 회원가입 작성 후 이동
+	@PostMapping("/signup")
+	public String openSignup(LoginDomain loginDomain) throws Exception{
+		userService.openSignup(loginDomain);
+		return "redirect:/login";
+	}
+	
+	
 	
 }
 

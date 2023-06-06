@@ -43,5 +43,13 @@ public class UserServiceImpl implements UserService {
 		return userMapper.smbGetId(map);
 	}
 
+	
+	//signup
+	@Override
+	public void openSignup(LoginDomain loginDomain) throws Exception {
+		userMapper.openSignup(loginDomain);
+		
+	}
+
 
 }

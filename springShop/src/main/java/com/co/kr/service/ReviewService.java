@@ -23,6 +23,11 @@ public interface ReviewService {
 		
 	//게시글 삭제
 	void deleteReview(int rbSeq) throws Exception;
+
+	//삭제 후 rb_seq와 중복되지 않는 가장 작은 수 생성
+	int ReviewSeq();
+	
+	
 	
 	
 	// 인서트 및 업데이트

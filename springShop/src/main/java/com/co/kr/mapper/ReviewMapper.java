@@ -26,6 +26,9 @@ public interface ReviewMapper {
 	void deleteReview(int rbSeq) throws Exception;
 	
 	
+	int ReviewSeq();
+	
+	
 	//select one file
 	/*	public List<ReviewFileDomain> boardSelectOneFile(HashMap<String, Object> map);
 
