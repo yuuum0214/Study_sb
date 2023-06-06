@@ -19,30 +19,16 @@ public class UserServiceImpl implements UserService {
 	public LoginDomain smbSelectList(Map<String, String> map) {
 		return userMapper.smbSelectList(map);
 	}
-
-	@Override
-	public void smbCreate(LoginDomain loginDomain) {
-		userMapper.smbCreate(loginDomain);
-	}
-
+	
 	@Override
 	public List<LoginDomain> smbAllList(Map<String, Integer> map) { 
 		return userMapper.smbAllList(map);
 	}
-
+	
 	@Override
-	public void smbUpdate(LoginDomain loginDomain) {
-		userMapper.smbUpdate(loginDomain);
-	}
-
-	@Override
-	public void smbRemove(Map<String, String> map) {
-		userMapper.smbRemove(map);
-	}
-
-	@Override
-	public LoginDomain smbGetId(Map<String, String> map) {
-		return userMapper.smbGetId(map);
+	public int smbGetAll() {
+		// TODO Auto-generated method stub
+		return userMapper.smbGetAll();
 	}
 
 	@Override
@@ -51,10 +37,11 @@ public class UserServiceImpl implements UserService {
 		return userMapper.smbDuplicationCheck(map);
 	}
 
+	
 	@Override
-	public int smbGetAll() {
-		// TODO Auto-generated method stub
-		return userMapper.smbGetAll();
+	public LoginDomain smbGetId(Map<String, String> map) {
+		return userMapper.smbGetId(map);
 	}
+
 
 }

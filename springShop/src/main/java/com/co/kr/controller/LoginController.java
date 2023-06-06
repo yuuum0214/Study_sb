@@ -36,50 +36,45 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private ReviewService reviewService;
-	
 	@GetMapping("/login")
-    public String login() {
+    public String showLogin() {
     	return "login.html";
     }
+	
+	
 
-    @RequestMapping(value = "/login")
-    public String login(LoginVO loginDTO, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+	@PostMapping(value = "/login")
+	public String login(LoginVO loginDTO, HttpServletRequest request, Model model) throws IOException {
 
-        // session 처리
-        HttpSession session = request.getSession();
-        // 중복체크
-        Map<String, String> map = new HashMap<>();
-        map.put("smbId", loginDTO.getId());
-        map.put("smbPw", loginDTO.getPw());
+		log.info("login method called");
 
-        // 중복체크
-        int dupleCheck = userService.smbDuplicationCheck(map);
-        LoginDomain loginDomain = userService.smbGetId(map);
+		// session 처리
+		HttpSession session = request.getSession();
+		// 중복체크
+		Map<String, String> map = new HashMap<>();
+		map.put("smbId", loginDTO.getId());
+		map.put("smbPw", loginDTO.getPw());
 
-        if (dupleCheck == 0) {
-            String alertText = "없는 아이디이거나 패스워드가 잘못되었습니다. 가입해주세요";
-            String redirectPath = "/signin";
-            CommonUtils.redirect(alertText, redirectPath, response);
-            return "redirect:/login";
-        }
+		// 중복체크
+		int dupleCheck = userService.smbDuplicationCheck(map);
+		LoginDomain loginDomain = userService.smbGetId(map);
 
-        // 현재아이피 추출
-        String IP = CommonUtils.getClientIP(request);
+		if (dupleCheck == 0) {
+			String alertText = "없는 아이디이거나 패스워드가 잘못되었습니다. 다시 입력해주세요";
+			model.addAttribute("alertText", alertText);
+			return "login.html";
+		}
 
-        // session 저장
-        session.setAttribute("ip", IP);
-        session.setAttribute("id", loginDomain.getSmbId());
-        session.setAttribute("smbLevel", loginDomain.getSmbLevel());
+		// 현재 아이피 추출
+		String IP = CommonUtils.getClientIP(request);
 
-//        List<ReviewListDomain> items = reviewService.selectReviewList();
-//        System.out.println("items ==> " + items);
-        // 모델에 items 추가
-//        model.addAttribute("items", items);
+		// session 저장
+		session.setAttribute("ip", IP);
+		session.setAttribute("id", loginDomain.getSmbId());
+		session.setAttribute("smbLevel", loginDomain.getSmbLevel());
 
-        return "redirect:/"; // 로그인 성공 시 홈 페이지로 리다이렉트
-    }
+		return "redirect:/"; // 로그인 성공 시 홈 페이지로 리다이렉트
+	}
 
 
 }
