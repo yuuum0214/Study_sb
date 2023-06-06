@@ -17,25 +17,29 @@
 		VALUES (#{ibSeq}, #{cType}, #{ibTitle}, 'admin', #{ibContent}, NOW())
 	</insert>
 	
-	<!-- 선택 게시글 조회 -->
+	<!-- ask : 선택 게시글 조회 -->
 	<select id="selectAskDetail" parameterType="int" resultType="com.co.kr.domain.AskListDomain">
 		SELECT kb.ib_seq, C.c_type, kb.ib_title, kb.smb_id, kb.ib_content, kb.ib_create
 		FROM shop.ask_b AS kb, shop.combox AS C
 		WHERE kb.num = C.num AND kb.ib_seq = #{ibSeq}
 	</select>
 	
-	<!-- 게시글 수정 -->
+	<!-- ask : 게시글 수정 -->
 	<update id="updateAsk" parameterType="com.co.kr.domain.AskListDomain">
 	    UPDATE shop.ask_b
 	    SET ib_title = #{ibTitle}, ib_content = #{ibContent}
 	    WHERE ib_seq = #{ibSeq}
 	</update>
 	
-	<!-- 게시글 삭제 -->
+	<!-- ask : 게시글 삭제 -->
 	<delete id="deleteAsk" parameterType="int">
 	    DELETE FROM shop.ask_b
 	    WHERE ib_seq = #{ibSeq}
 	</delete>
 	
-	
+	<!-- askFile : 입력 -->
+	<insert id="askFileUpload" parameterType="com.co.kr.domain.AskFileDomain">
+		INSERT INTO shop.ask_f( ib_seq, smb_id, ib_orig_file, ib_new_file, ib_file_path, ib_file_size)
+		VALUES ( #{ibSeq}, #{smbId}, #{ibOrigFile}, #{ibNewFile}, #{ibFilePath}, #{ibFileSize} )
+	</insert>
 </mapper>

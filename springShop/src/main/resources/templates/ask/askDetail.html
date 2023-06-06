@@ -29,7 +29,7 @@
                         <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Q&A</span></h1>
                     </div>
                     <div class="bg-white py-4 mt-auto">
-						<form id="frm" method="post">
+						<form id="frm" method="post" enctype="multipart/form-data" action="/ask/insertAsk">
 							<table class="ask detail table">
 								<tr>
 									<th scope="row" style="text-align:center">NO</th>
@@ -57,7 +57,8 @@
 								</tr>
 								<tr>
 				    				<th scope="row" style="text-align:center">사진 첨부</th>
-				    				<td><input type="image" id="askFile" name="askFile" alt="이미지를 첨부하지 않은 게시글입니다."></td>
+				    				<td><img src="" id="file" name="file" alt="이미지를 첨부하지 않은 게시글입니다."></td>
+				    				<!-- <td><input type="image" id="file" name="file" alt="이미지를 첨부하지 않은 게시글입니다."></td> -->
 				    			</tr>
 							</table>
 							<input type="hidden" name="ibSeq" th:value="${askListDomain.ibSeq}">
