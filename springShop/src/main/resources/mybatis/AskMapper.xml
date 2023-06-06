@@ -14,7 +14,7 @@
 	<!-- insert문 -->
 	<insert id="insertAsk" parameterType="com.co.kr.domain.AskListDomain">
 		INSERT INTO shop.ask_b (ib_seq, num, ib_title, smb_id, ib_content, ib_create)
-		VALUES (#{ibSeq}, #{cType}, #{ibTitle}, 'admin', #{ibContent}, NOW())
+		VALUES (#{ibSeq}, #{cType}, #{ibTitle}, #{smbId}, #{ibContent}, NOW())
 	</insert>
 	
 	<!-- ask : 선택 게시글 조회 -->
