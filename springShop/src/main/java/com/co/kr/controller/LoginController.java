@@ -89,6 +89,18 @@ public class LoginController {
 
 		return "redirect:/"; // 로그인 성공 시 홈 페이지로 리다이렉트
 	}
-
-
+	
+	// 로그아웃 기능
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if(session != null) {
+			session.invalidate();
+		}
+		return "redirect:/";
+	}
+	
 }
+
+
+
