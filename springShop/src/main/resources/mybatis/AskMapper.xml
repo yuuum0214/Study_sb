@@ -11,12 +11,29 @@
 		ORDER BY kb.ib_seq DESC
 	</select>
 	
-	<!-- insert문 -->
-	<insert id="insertAsk" parameterType="com.co.kr.domain.AskListDomain">
+	<!-- ask게시판 파일 insert, foreach: 하나 이상의 파일이기에 반복문 처리 -->
+<!--	<insert id="insertAskFileList" parameterType="com.co.kr.domain.AskFileDomain">
+		<foreach collection="list" item="item" separator=";">
+  			INSERT INTO shop.ask_f (ib_seq, smb_id, ib_orig_file, ib_file_path, ib_file_size)
+			VALUES
+		  	(#{item.ibSeq}, #{item.smbId}, #{item.ibOrigFile}, #{item.ibFilePath}, #{item.ibFileSize})
+		</foreach>
+	</insert>
+	-->
+	<insert id="insertAskFileList" parameterType="com.co.kr.domain.AskFileDomain">
+    	INSERT INTO shop.ask_f (ib_seq, smb_id, ib_orig_file, ib_file_path, ib_file_size)
+    	VALUES
+    	<foreach collection="list" item="item" separator=",">
+        	(#{item.ibSeq}, #{item.smbId}, #{item.ibOrigFile}, #{item.ibFilePath}, #{item.ibFileSize})
+    	</foreach>
+	</insert>
+	
+	<!-- ask 게시판 게시글 insert문 -->
+	<insert id="insertAsk" parameterType="com.co.kr.domain.AskListDomain" useGeneratedKeys="true" keyProperty="ibSeq">
 		INSERT INTO shop.ask_b (ib_seq, num, ib_title, smb_id, ib_content, ib_create)
 		VALUES (#{ibSeq}, #{cType}, #{ibTitle}, #{smbId}, #{ibContent}, NOW())
 	</insert>
-	
+		
 	<!-- ask : 선택 게시글 조회 -->
 	<select id="selectAskDetail" parameterType="int" resultType="com.co.kr.domain.AskListDomain">
 		SELECT kb.ib_seq, C.c_type, kb.ib_title, kb.smb_id, kb.ib_content, kb.ib_create
@@ -37,9 +54,4 @@
 	    WHERE ib_seq = #{ibSeq}
 	</delete>
 	
-	<!-- askFile : 입력 -->
-	<insert id="askFileUpload" parameterType="com.co.kr.domain.AskFileDomain">
-		INSERT INTO shop.ask_f( ib_seq, smb_id, ib_orig_file, ib_new_file, ib_file_path, ib_file_size)
-		VALUES ( #{ibSeq}, #{smbId}, #{ibOrigFile}, #{ibNewFile}, #{ibFilePath}, #{ibFileSize} )
-	</insert>
 </mapper>

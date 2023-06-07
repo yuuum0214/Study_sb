@@ -18,4 +18,6 @@ public interface MemberService {
 	void deleteMember(LoginDomain loginDomain) throws Exception;
 
 	void deleteMember(int smbSeq) throws Exception;
+	
+
 }

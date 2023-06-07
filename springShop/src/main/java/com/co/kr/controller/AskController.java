@@ -53,33 +53,20 @@ public class AskController {
 		return "ask/askEdit";
 	}
 	
-	
+	/*파일추가 코드로 수정
 	//문의사항 작성 후 연동
 	@RequestMapping("/ask/insertAsk")
 	public String insertAsk(AskListDomain askListDomain) throws Exception{
 		askService.insertAsk(askListDomain);
 		return "redirect:/ask";
-	}
-	/*
-	//문의사항에 파일 첨부해서 새로 연동
-	@PostMapping(value = "/ask/insertAsk")
-	public ModelAndView insertAsk(AskFileListVO askFileListVO, MultipartHttpServletRequest request,
-								HttpServletRequest httpRequest) throws IOException, ParseException{
-		ModelAndView mav = new ModelAndView();
-		int ibSeq = askService.fileProcess(askFileListVO, request, httpRequest);
-		askFileListVO.setContent("");
-		askFileListVO.setTitle("");
-		
-		mav = askListSelect(askFileListVO, String.valueOf(ibSeq), request);
-		mav.setViewName("ask.html");
-		return mav;
-	}
-	
-	private ModelAndView askListSelect(AskFileListVO askFileListVO, String valueOf,
-			MultipartHttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
 	}*/
+	//문의사항 작성 후 연동
+	@RequestMapping("/ask/insertAsk")
+	public String insertAsk(AskListDomain askListDomain, MultipartHttpServletRequest multipartHttpServletRequest, String smbId) throws Exception{
+		askService.insertAsk(askListDomain, multipartHttpServletRequest, smbId);
+		return "redirect:/ask";
+	}
+
 
 	//문의사항 읽어오기
 	@RequestMapping("/ask/openAskDetail")

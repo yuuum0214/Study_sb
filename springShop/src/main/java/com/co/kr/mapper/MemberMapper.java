@@ -19,4 +19,5 @@ public interface MemberMapper {
 	
 	//멤버 삭제
 	void deleteMember(int smbSeq) throws Exception;
+	
 }
