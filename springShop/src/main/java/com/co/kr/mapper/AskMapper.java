@@ -25,5 +25,5 @@ public interface AskMapper {
 	void deleteAsk(int ibSeq) throws Exception;
 	
 	//ask File 추가
-	public void askFileUpload(AskFileDomain askFileDomain);
+	void insertAskFileList(List<AskFileDomain> list) throws Exception;
 }

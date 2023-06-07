@@ -87,6 +87,12 @@
 		    <version>2.0.7</version>
 		</dependency>
 		
+		<!--파일처리-->
+		<dependency>
+    		<groupId>commons-fileupload</groupId>
+    		<artifactId>commons-fileupload</artifactId>
+    		<version>1.4</version>
+		</dependency>
 		
 		 <!-- 로깅 라이브러리 -->
   <dependency>

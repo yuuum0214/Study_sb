@@ -29,6 +29,4 @@
 		ORDER BY smb_seq DESC
 	</delete>
 	
-	
-	
 </mapper>
