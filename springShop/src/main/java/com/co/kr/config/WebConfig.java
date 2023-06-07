@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -59,6 +60,12 @@ public class WebConfig implements WebMvcConfigurer {
 		commonsMultipartResolver.setDefaultEncoding("UTF-8");
 		commonsMultipartResolver.setMaxUploadSizePerFile(10 * 1024*1024);
 		return commonsMultipartResolver;
+	}
+	
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	    registry.addResourceHandler("askimages/**")
+	            .addResourceLocations("file:///E:/askimages/");
 	}
 	
 }

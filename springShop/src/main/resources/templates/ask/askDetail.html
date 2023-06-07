@@ -7,7 +7,7 @@
      	<meta charset="UTF-8">
     	<title>AskDetail</title>
     </head>
-    
+<body>
     <div layout:fragment="content">
 
         <!-- Call to action section-->
@@ -41,7 +41,6 @@
 									<th scope="row" style="text-align:center">문의 분류</th>
 									<td th:text="${askListDomain.cType}"></td>
 									<th scope="row" style="text-align:center">작성자</th>
-<!--									<td th:text="${session.id}"></td> -->
 									<td th:text="${askListDomain.smbId}"></td> 
 								</tr>
 								<tr>
@@ -58,8 +57,20 @@
 								</tr>
 								<tr>
 				    				<th scope="row" style="text-align:center">사진 첨부</th>
-				    				<td><img src="" id="file" name="file" alt="이미지를 첨부하지 않은 게시글입니다."></td>
-				    				<!-- <td><input type="image" id="file" name="file" alt="이미지를 첨부하지 않은 게시글입니다."></td> -->
+				    				<!-- 
+				    				<td>
+				    					<img id="files" name="files" th:if="${askListDomain.askFileList == null or askListDomain.askFileList.size() == 0}" alt="이미지를 첨부하지 않은 게시글입니다.">
+									</td> -->
+									<th:block th:if="${askListDomain.askFileList != null and !askListDomain.askFileList.empty}">
+									    <th:block th:each="file : ${askListDomain.askFileList}">
+									        <img th:src="@{${file.ibFilePath}}" alt="이미지">
+									    </th:block>
+									</th:block>
+				    				<th:block th:unless="${askListDomain.askFileList != null and !askListDomain.askFileList.empty}">
+									    <p>이미지를 첨부하지 않은 게시글입니다.</p>
+									</th:block>
+								<!-- 	    <img id="files" name="files" src="@{'/' + askListDomain.askFileList[0].ibFilePath}" alt="이미지" width="100px" height="auto">
+									</th:block>-->
 				    			</tr>
 							</table>
 							<input type="hidden" name="ibSeq" th:value="${askListDomain.ibSeq}">
@@ -103,5 +114,5 @@
     
         <!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
     </div>
-
+</body>    
 </html>
