@@ -1,58 +1,52 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net/nz/thymeleaf/layout"
-    layout:decorate="~{layouts/editlayout}">
-     <head>
-     	<meta charset="UTF-8">
-    	<title>reviewWrite</title>
-    </head>
-    
-    <div layout:fragment="content">
-    	<!-- Page Content-->
-        <div class="container px-5 my-5">
-        	<div class="text-center mb-5">
-            	<h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Review</span></h1>
-            </div>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net/nz/thymeleaf/layout" layout:decorate="~{layouts/editlayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>reviewWrite</title>
+</head>
+
+<div layout:fragment="content">
+    <!-- Page Content-->
+    <div class="container px-5 my-5">
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Review</span></h1>
         </div>
-        
-        <div class="bg-white container-fluid">
-            <div class="row">
-            <h2>리뷰쓰기</h2>
-            <form id="frm" name="frm" method="post" action="/review/insertReview">
-                <table class="review table">
-                
-                
-            	<tr> 
-                	<th>제목</th>
-                	<td>
-                    	
-                    	<input type="text" id="rbTitle" name="rbTitle" placeholder="제목" required/>
-                	</td>
-            	</tr>
-            
-            	<tr> 
-               		<th>내용</th>
-                		<td colspan="2">
-                   			<textarea id="rbContent" name="rbContent" placeholder="내용을 적어주세요." rows="5" cols="200" required></textarea>
-                		</td>
-            	</tr>
-            	<tr> 
-               		<th><label for="file">첨부파일</label></th>
-                <td>
-                    <input type="file" id="file" name="files" multiple />
-                </td>
-            	</tr>
-        		
-        
-        
-				</table>
-				
-				<input type="submit" id="submit" value="저장" class="btn btn-primary">
-				
-       			</form>
-			</div>
-		</div>
-    
     </div>
-    
+
+    <div class="bg-white container-fluid">
+        <div class="row">
+            <form id="frm" name="frm" method="post" action="/review/insertReview">
+                <table class="review table" style="margin-left:30px">
+                    <tr>
+                        <th>작성자 : &nbsp;</th>
+                        <td><b>[&nbsp;<span th:text=${session.id}></span>&nbsp;]</b></td>
+                        <td><input type="hidden" th:value="${session.id}" id="smbId" name="smbId"></td>
+                    </tr>
+                    <tr>
+                        <th>제목</th>
+                        <td>
+                            <input type="text" id="rbTitle" name="rbTitle" placeholder="제목" required/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>내용</th>
+                        <td colspan="2">
+                            <textarea id="rbContent" name="rbContent" placeholder="내용을 적어주세요." rows="10" cols="110" required></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="file">첨부파일</label></th>
+                        <td>
+                            <input type="file" id="file" name="files" multiple />
+                        </td>
+                    </tr>
+                </table>
+
+                <input type="submit" id="submit" value="저장" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+
 </html>

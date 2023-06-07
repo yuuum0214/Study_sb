@@ -13,7 +13,7 @@
 	<!-- insert문 -->
 	<insert id="insertReview" parameterType="com.co.kr.domain.ReviewListDomain">
         INSERT INTO shop.review_b (rb_seq, rb_title, smb_id, rb_content, rb_create, rb_update)
-        VALUES (#{rbSeq}, #{rbTitle}, 'admin', #{rbContent}, NOW(), NOW())
+        VALUES (#{rbSeq}, #{rbTitle}, #{smbId}, #{rbContent}, NOW(), NOW())
     </insert>
     
 
