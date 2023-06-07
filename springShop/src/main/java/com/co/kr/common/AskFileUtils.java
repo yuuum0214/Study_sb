@@ -26,7 +26,7 @@ public class AskFileUtils {
 		List<AskFileDomain> fileList = new ArrayList<>();
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd");
 		ZonedDateTime current = ZonedDateTime.now();
-		String path = "images/"+current.format(format);
+		String path = "resources/static/askimages";   //저장경로
 		File file = new File(path);
 		if(file.exists() == false) {
 			file.mkdirs();

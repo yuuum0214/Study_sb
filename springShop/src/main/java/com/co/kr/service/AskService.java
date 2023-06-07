@@ -25,8 +25,6 @@ public interface AskService {
 	//게시글 삭제
 	void deleteAsk(int ibSeq) throws Exception;
 	
-	//게시판 작성 + 파일 입력
-//	void insertAsk(AskListDomain askListDomain, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception;
 	// 게시판 작성 + 파일 입력
 	void insertAsk(AskListDomain askListDomain, MultipartHttpServletRequest multipartHttpServletRequest, String smbId) throws Exception;
 

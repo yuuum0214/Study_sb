@@ -5,21 +5,21 @@
 	
 	<!-- ask게시판 리스트 보이기 -->
 	<select id="selectAskList" resultType="com.co.kr.domain.AskListDomain">
-		SELECT kb.ib_seq , C.c_type, kb.ib_title, kb.smb_id, kb.ib_content , kb.ib_create 
-		FROM shop.ask_b AS kb, shop.combox AS C
-		WHERE kb.num = C.num
+	<![CDATA[
+		SELECT kb.ib_seq, C.c_type, kb.ib_title, kb.smb_id, kb.ib_content,  kb.ib_create, kf.ib_file_path
+		FROM shop.ask_b AS kb
+		JOIN shop.combox AS C ON kb.num = C.num
+		LEFT JOIN (
+		    SELECT ib_seq, MIN(ib_file_path) AS ib_file_path
+		    FROM shop.ask_f
+		    WHERE ib_file_path IS NULL
+		    GROUP BY ib_seq
+		) AS kf ON kb.ib_seq = kf.ib_seq
 		ORDER BY kb.ib_seq DESC
+	]]>
 	</select>
-	
-	<!-- ask게시판 파일 insert, foreach: 하나 이상의 파일이기에 반복문 처리 -->
-<!--	<insert id="insertAskFileList" parameterType="com.co.kr.domain.AskFileDomain">
-		<foreach collection="list" item="item" separator=";">
-  			INSERT INTO shop.ask_f (ib_seq, smb_id, ib_orig_file, ib_file_path, ib_file_size)
-			VALUES
-		  	(#{item.ibSeq}, #{item.smbId}, #{item.ibOrigFile}, #{item.ibFilePath}, #{item.ibFileSize})
-		</foreach>
-	</insert>
-	-->
+
+	<!-- ask 게시판 파일 insert문 -->
 	<insert id="insertAskFileList" parameterType="com.co.kr.domain.AskFileDomain">
     	INSERT INTO shop.ask_f (ib_seq, smb_id, ib_orig_file, ib_file_path, ib_file_size)
     	VALUES
@@ -27,19 +27,33 @@
         	(#{item.ibSeq}, #{item.smbId}, #{item.ibOrigFile}, #{item.ibFilePath}, #{item.ibFileSize})
     	</foreach>
 	</insert>
-	
+
 	<!-- ask 게시판 게시글 insert문 -->
 	<insert id="insertAsk" parameterType="com.co.kr.domain.AskListDomain" useGeneratedKeys="true" keyProperty="ibSeq">
 		INSERT INTO shop.ask_b (ib_seq, num, ib_title, smb_id, ib_content, ib_create)
 		VALUES (#{ibSeq}, #{cType}, #{ibTitle}, #{smbId}, #{ibContent}, NOW())
 	</insert>
-		
+ 		
+	<!-- ask : 선택 게시글 파일 조회 -->
+	<select id="selectAskFileList" parameterType="int" resultType="com.co.kr.domain.AskFileDomain">
+	    SELECT ib_file_path
+	    FROM shop.ask_f
+	    WHERE ib_seq = #{ibSeq}
+	    <if test="files != null">
+	        AND ib_file_path = #{files}
+	    </if>		
+	    ORDER BY ib_file_size DESC
+	</select>
+	
 	<!-- ask : 선택 게시글 조회 -->
 	<select id="selectAskDetail" parameterType="int" resultType="com.co.kr.domain.AskListDomain">
-		SELECT kb.ib_seq, C.c_type, kb.ib_title, kb.smb_id, kb.ib_content, kb.ib_create
-		FROM shop.ask_b AS kb, shop.combox AS C
-		WHERE kb.num = C.num AND kb.ib_seq = #{ibSeq}
+	    SELECT kb.ib_seq, C.c_type, kb.ib_title, kb.smb_id, kb.ib_content, kb.ib_create, kf.ib_file_path
+	    FROM shop.ask_b AS kb
+	    JOIN shop.combox AS C ON kb.num = C.num
+	    LEFT JOIN shop.ask_f AS kf ON kb.ib_seq = kf.ib_seq
+	    WHERE kb.ib_seq = #{ibSeq}
 	</select>
+
 	
 	<!-- ask : 게시글 수정 -->
 	<update id="updateAsk" parameterType="com.co.kr.domain.AskListDomain">
