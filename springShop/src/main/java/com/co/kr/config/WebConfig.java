@@ -62,10 +62,13 @@ public class WebConfig implements WebMvcConfigurer {
 		return commonsMultipartResolver;
 	}
 	
+	
+	
+	/*
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 	    registry.addResourceHandler("askimages/**")
 	            .addResourceLocations("file:///E:/askimages/");
 	}
-	
+	*/
 }

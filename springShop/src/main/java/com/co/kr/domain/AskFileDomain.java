@@ -2,8 +2,6 @@ package com.co.kr.domain;
 
 import lombok.Data;
 
-//@Builder(builderMethodName = "builder")
-
 @Data
 public class AskFileDomain {
 

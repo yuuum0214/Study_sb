@@ -15,8 +15,9 @@ public class AskListDomain {
 	private String smbId;
 	private String ibContent;
 	private String ibCreate;
-	
-
 	private List<AskFileDomain> askFileList;
-
+	
+	
 }
+
+
