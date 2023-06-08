@@ -6,6 +6,7 @@ import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -39,7 +40,7 @@ public class AskServiceImpl implements AskService {
 	
 	//파일업로드
 	@Autowired
-	private AskFileUtils askfileUtils;
+	private AskFileUtils askFileUtils;
 	
 	@Override
 	public List<AskListDomain> selectAskList() throws Exception {
@@ -60,7 +61,7 @@ public class AskServiceImpl implements AskService {
 		
 		askMapper.insertAsk(askListDomain);
 		
-		List<AskFileDomain> list = askfileUtils.parseFileInfo(askListDomain.getIbSeq(), multipartHttpServletRequest);
+		List<AskFileDomain> list = askFileUtils.parseFileInfo(askListDomain.getIbSeq(), multipartHttpServletRequest);
 		if(CollectionUtils.isEmpty(list) == false) {
 			for(AskFileDomain fileDomain : list) {
 				fileDomain.setSmbId(smbId); //각 파일에 smb_id 설정 , session에서 id를 들고옴으로 에러 해결
@@ -89,11 +90,12 @@ public class AskServiceImpl implements AskService {
 	//ask상세보기
 	@Override
 	public AskListDomain selectAskDetail(int ibSeq) throws Exception{
-		AskListDomain askListDomain = askMapper.selectAskDetail(ibSeq);
-		List<AskFileDomain> askFileList = askMapper.selectAskFileList(ibSeq);
-//		askListDomain.setAskFileList(askFileList);
-		
-		return askListDomain;
+	    AskListDomain askListDomain = askMapper.selectAskDetail(ibSeq);
+	    List<AskFileDomain> askFileList = askMapper.selectAskFileList(ibSeq);
+	    askListDomain.setAskFileList(askFileList);
+	    System.out.println(askFileList);
+	    
+	    return askListDomain;
 	}
 
 	

@@ -29,4 +29,6 @@ public interface AskMapper {
 	
 	//ask File 보기
 	List<AskFileDomain> selectAskFileList(int ibSeq) throws Exception;
+
+
 }

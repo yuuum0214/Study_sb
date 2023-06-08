@@ -26,9 +26,9 @@ public class AskFileUtils {
 		List<AskFileDomain> fileList = new ArrayList<>();
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd");
 		ZonedDateTime current = ZonedDateTime.now();
-		String path = "resources/static/askimages";   //저장경로
+		String path = "src/main/resources/static/askimages";   //저장경로
 		File file = new File(path);
-		if(file.exists() == false) {
+		if(!file.exists()) {
 			file.mkdirs();
 		}
 		
@@ -39,7 +39,7 @@ public class AskFileUtils {
 			List<MultipartFile> list = multipartHttpServletRequest.getFiles(iterator.next());
 			//파일 형식 확인 및 이미지 확장자 지정
 			for(MultipartFile multipartFile : list) {
-				if(multipartFile.isEmpty() == false) {
+				if(!multipartFile.isEmpty()) {
 					contentType = multipartFile.getContentType();
 					if(ObjectUtils.isEmpty(contentType)) {
 						break;
@@ -65,7 +65,8 @@ public class AskFileUtils {
 					askFileDomain.setIbFilePath(path + "/" + newFileName);
 					askFileDomain.setIbFileSize(multipartFile.getSize());
 					fileList.add(askFileDomain);
-					
+
+
 					//업로드된 파일 저장
 					file = new File(path + "/" + newFileName);
 					multipartFile.transferTo(file);

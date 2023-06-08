@@ -30,7 +30,7 @@
                     </div>
                     <div class="bg-white py-4 mt-auto">
 						<form id="frm" method="post" enctype="multipart/form-data" action="/ask/insertAsk">
-							<table class="ask detail table">
+							<table class="ask detail table" style="margin:auto;">
 								<tr>
 									<th scope="row" style="text-align:center">NO</th>
 									<td th:text="${askListDomain.ibSeq}"></td>
@@ -56,26 +56,52 @@
 									</td>
 								</tr>
 								<tr>
-				    				<th scope="row" style="text-align:center">사진 첨부</th>
-				    				<!-- 
-				    				<td>
-				    					<img id="files" name="files" th:if="${askListDomain.askFileList == null or askListDomain.askFileList.size() == 0}" alt="이미지를 첨부하지 않은 게시글입니다.">
-									</td> -->
-									<th:block th:if="${askListDomain.askFileList != null and !askListDomain.askFileList.empty}">
-									    <th:block th:each="file : ${askListDomain.askFileList}">
-									        <img th:src="@{${file.ibFilePath}}" alt="이미지">
-									    </th:block>
-									</th:block>
-				    				<th:block th:unless="${askListDomain.askFileList != null and !askListDomain.askFileList.empty}">
-									    <p>이미지를 첨부하지 않은 게시글입니다.</p>
-									</th:block>
-								<!-- 	    <img id="files" name="files" src="@{'/' + askListDomain.askFileList[0].ibFilePath}" alt="이미지" width="100px" height="auto">
-									</th:block>-->
-				    			</tr>
+								    <th scope="row" style="text-align:center">사진 첨부</th>
+								    <td colspan="3" class="view_text">
+								        <div th:if="${askListDomain.askFileList != null and !askListDomain.askFileList.empty}"  th:value="${askListDomain.ibSeq} == ${askFileDomain.ibSeq}">
+								            <div th:each="file : ${askListDomain.askFileList}">
+			            						<div class="file_list">
+							    					<a th:each="list : ${askListDomain.askFileList}" th:text="|${list.ibOrigFile} (${list.ibFileSize} kb)|"></a>
+							    				</div>
+								                <!-- <img th:src="@{|files:${file.ibFilePath}|}" alt="Attached Image" style="max-width: 500px; max-height: 500px;"> -->
+								            </div>
+								        </div>
+								        <div th:unless="${askListDomain.askFileList != null and !askListDomain.askFileList.empty}">
+								            <p>사진이 첨부되지 않았습니다.</p>
+								        </div>
+								    </td>
+								    <th><input type="hidden" name="ibSeq" th:value="${askListDomain.ibSeq}"></th>
+								</tr>
 							</table>
-							<input type="hidden" name="ibSeq" th:value="${askListDomain.ibSeq}">
 						</form>
 						
+			           <!-- askQuery -->
+			           <th:block th:if="${session.id}=='admin'">
+							<div class="container px-5 mb-5">
+				            	<div class="bg-white py-4 mt-auto">
+									<form id="frm" name="frm" method="post" action="/ask/askQuery">
+										<table>
+											<tr>
+												<th>
+								                    <div style="margin:auto; text-align:center;">
+														<h5><b>답변</b></h5>
+														<a href="ask/askqueryEdit">
+															<input type="button" id="askQuerybtn" class="btn btn-outline-dark" value="답변하기">
+														</a>
+													</div>
+												</th>
+												<td>
+													<div id="askQuery" name="askQuery">
+														<textarea value="답변이 들어갈 위치입니다." style="border: none" cols="120" rows="5" readonly></textarea>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</form>
+					    		</div>
+			    			</div>
+		    			</th:block>
+	    				
 						<div style="text-align:right">
             	    		<input type="button" id="list" value="목록으로" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" onclick="history.go(-1)">
 			                <th:block th:if="${session.id}==${askListDomain.smbId}">
@@ -109,9 +135,7 @@
                     </div>
                 </div>
             </section>
-
-    	
-    
+            
         <!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
     </div>
 </body>    
