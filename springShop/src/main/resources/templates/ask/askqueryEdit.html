@@ -3,7 +3,7 @@
     xmlns:layout="http://www.ultraq.net/nz/thymeleaf/layout"
     layout:decorate="~{layouts/editlayout}">
      <head>
-    	<title>AskBoard</title>
+    	<title>Answer</title>
     </head>
     
     <body>
@@ -12,42 +12,25 @@
             <!-- Projects Section-->
             <section class="py-5">
                 <div class="container px-5 mb-5">
-                    <div class="text-center mb-5">
-                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">회원관리 : 회원추가</span></h1>
-                    </div>
-                    
 					<div class="container px-5 mb-5">
 						<div class="bg-success py-4 mt-auto text-white">
-			            	<form id="frm" name="frm" method="post" action="/member/insertMember">
-							
-							<table class="member insert" style="margin:auto;">
-								<colgroup>
-									<col style="width: 5%"/>
-									<col style="width: 35%"/>
-									<col style="width: 5%"/>
-									<col style="width: 35%"/>
-									<col style="width: 10%"/>
-									<col style="width: 10%"/>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th>ID :</th>
-										<th><input type="text" id="smbId" name="smbId"></th>
-										<th>PW :</th>
-										<th><input type="text" id="smbPw" name="smbPw"></th>
-										<th><button id=insertMember class="btn btn-outline-light">추가</button></th>
-										<th><input type="button" id="reset" value="취소" class="btn btn-outline-light" onclick="history.go(-1)"></th>
-									</tr>
-									<tr>
+			            	<form id="frm" name="frm" method="post" action="ask/insertAnswer">
+								<table>
+									<input type="hidden" th:text="${askListDomain.ibSeq}"/>
 										<th>
-											<input type="hidden" id="smbLevel" name="smbLevel" value="2" />
-											<input type="hidden" id="smbIp" name="smbIp" value="127.0.0.1"/>
-											<input type="hidden" id="smbUse" name="smbUse" value="Y" />
+						                    <div style="margin:auto; text-align:center;">
+												<h5><b>답변</b></h5>
+												<a href="ask/insertAnswer"">
+													<input type="button" id="insertAnswer" class="btn btn-outline-dark" value="답변하기">
+												</a>
+											</div>
 										</th>
-									</tr>
-								</tbody>
-							</table>
-							
+										<td>
+											<div id="inAnswer" name="inAnswer">
+												<textarea style="border: none" cols="120" rows="15"></textarea>
+											</div>
+										</td>
+								</table>
 							</form>
 		
 						</div>
@@ -55,8 +38,6 @@
                 </div>
             </section>
 
-       <!--  </main>
-    </body> -->
     </div>
     </body>
 </html>
