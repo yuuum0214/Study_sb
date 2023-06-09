@@ -42,21 +42,30 @@
 				  </tr>
 				  
 				  <tr>
+				  	<th scope="row" style="text-align:center">내용</th>
 					<td colspan="4" class="view_text"  style="text-align:center">
 						<textarea title="내용" id="rbContent" name="rbContent" style="border: none" cols="120" rows="15" th:text="${reviewListDomain.rbContent}"></textarea>
 					</td>
 				  </tr>
+				  
+				 
+				  
+                       
                   </tbody>
                 </table>
 
                 <input type="hidden" name="rbSeq" th:value="${reviewListDomain.rbSeq}">
                 </form>
+                 <div>
+  
+             
                 
                 <div style="text-align:right">
             		<input type="button" id="list" value="목록으로" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" onclick="history.go(-1)">
     				<input type="button" id="edit" value="수정하기" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">
     				<input type="button" id="delete" value="삭제하기" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">
 		    	</div>
+		    	
 		    	
 		    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 						<script type="text/javascript">
@@ -77,7 +86,7 @@
 								});
 							});
 						</script>
-
+		</div>
             </div>
         
         </div>

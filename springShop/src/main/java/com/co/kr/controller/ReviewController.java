@@ -6,13 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.co.kr.domain.AskListDomain;
-import com.co.kr.domain.BoardListDomain;
+import com.co.kr.domain.ReviewFileDomain;
 import com.co.kr.domain.ReviewListDomain;
 import com.co.kr.service.ReviewService;
-import com.co.kr.service.UploadService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,13 +43,12 @@ public class ReviewController {
     
 //  작성된 게시글을 등록하는 주소
     @RequestMapping("/review/insertReview")
-	public String insertReview(ReviewListDomain reviewListDomain) throws Exception{
+	public String insertReview(ReviewListDomain reviewListDomain, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception{
     	
-//    	삭제 후 rb_seq와 중복되지 않는 가장 작은 수 생성
     	int minReviewSeq = reviewService.ReviewSeq();
     	reviewListDomain.setRbSeq(minReviewSeq);
     	
-    	reviewService.insertReview(reviewListDomain);
+    	reviewService.insertReview(reviewListDomain, multipartHttpServletRequest);
 		return "redirect:/review";
 	}
     
@@ -61,6 +59,7 @@ public class ReviewController {
     	
     	ReviewListDomain reviewListDomain = reviewService.selectReviewDetail(rbSeq);
     	mav.addObject("reviewListDomain", reviewListDomain);
+    	
     	
     	return mav;
     }

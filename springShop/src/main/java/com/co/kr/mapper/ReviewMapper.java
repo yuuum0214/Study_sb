@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.co.kr.domain.AskListDomain;
+import com.co.kr.domain.ReviewFileDomain;
 import com.co.kr.domain.ReviewListDomain;
 
 @Mapper
@@ -27,6 +28,14 @@ public interface ReviewMapper {
 	
 	
 	int ReviewSeq();
+
+	void updateReviewSeq(ReviewListDomain review);
+	
+	void insertReviewFileList(List<ReviewFileDomain> list) throws Exception;
+
+	List<ReviewFileDomain> getReviewFiles(int rbSeq);
+	
+	List<ReviewFileDomain> selectReviewFileList(int rbSeq) throws Exception;
 	
 	
 	//select one file

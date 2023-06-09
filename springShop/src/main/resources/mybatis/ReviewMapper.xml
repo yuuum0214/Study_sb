@@ -16,6 +16,14 @@
         VALUES (#{rbSeq}, #{rbTitle}, #{smbId}, #{rbContent}, NOW(), NOW())
     </insert>
     
+    <insert id="insertReviewFileList" parameterType="java.util.List">
+        INSERT INTO shop.review_f (rb_seq, rb_orig_file, rb_file_path, rb_file_size)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.rbSeq}, #{item.rbOrigFile}, #{item.rbFilePath}, #{item.rbFileSize})
+        </foreach>
+    </insert>
+    
 
     <!-- 상세 보기 -->
     <select id="selectReviewDetail" parameterType="int" resultType="com.co.kr.domain.ReviewListDomain">
@@ -23,6 +31,8 @@
     	FROM shop.review_b
     	WHERE rb_seq = #{rbSeq}
 	</select>
+	
+	
 	
 	<!-- 게시글 수정 -->
 	<update id="updateReview" parameterType="com.co.kr.domain.ReviewListDomain">

@@ -40,8 +40,6 @@ public class LoginController {
 	@Autowired
 	private ReviewService reviewService;
 	
-	@Autowired
-	private AskService askService;
 	
 	@GetMapping("/signup")
 	public String signup() {
@@ -58,17 +56,15 @@ public class LoginController {
 	@PostMapping(value = "/login")
 	public String login(LoginVO loginDTO, HttpServletRequest request, Model model) throws Exception {
 
-		log.info("login method called");
-
 		// session 처리
 		HttpSession session = request.getSession();
 		ModelAndView mav = new ModelAndView();
-		// 중복체크
+		// 체크
 		Map<String, String> map = new HashMap<>();
 		map.put("smbId", loginDTO.getId());
 		map.put("smbPw", loginDTO.getPw());
 
-		// 중복체크
+		// 체크
 		int dupleCheck = userService.smbDuplicationCheck(map);
 		LoginDomain loginDomain = userService.smbGetId(map);
 

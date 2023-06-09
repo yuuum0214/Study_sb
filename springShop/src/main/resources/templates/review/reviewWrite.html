@@ -15,7 +15,7 @@
 
     <div class="bg-white container-fluid">
         <div class="row">
-            <form id="frm" name="frm" method="post" action="/review/insertReview">
+            <form id="frm" name="frm" method="post" action="/review/insertReview" enctype="multipart/form-data">
                 <table class="review table" style="margin-left:30px">
                     <tr>
                         <th>작성자 : &nbsp;</th>
@@ -38,7 +38,7 @@
                     <tr>
                         <th><label for="file">첨부파일</label></th>
                         <td>
-                            <input type="file" id="file" name="files" multiple />
+                            <input type="file" id="files" name="files" multiple />
                         </td>
                     </tr>
                 </table>

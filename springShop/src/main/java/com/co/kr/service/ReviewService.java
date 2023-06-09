@@ -3,8 +3,10 @@ package com.co.kr.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.co.kr.domain.AskListDomain;
+import com.co.kr.domain.ReviewFileDomain;
 import com.co.kr.domain.ReviewListDomain;
 
 @Service
@@ -13,7 +15,7 @@ public interface ReviewService {
 	List<ReviewListDomain> selectReviewList() throws Exception;
 	
 	//content insert
-	void insertReview(ReviewListDomain reviewListDomain) throws Exception;
+	void insertReview(ReviewListDomain reviewListDomain, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception;
 	
 	//상세 보기
 	ReviewListDomain selectReviewDetail(int rbSeq) throws Exception;
@@ -26,6 +28,8 @@ public interface ReviewService {
 
 	//삭제 후 rb_seq와 중복되지 않는 가장 작은 수 생성
 	int ReviewSeq();
+
+	List<ReviewFileDomain> getReviewFiles(int rbSeq);
 	
 	
 	

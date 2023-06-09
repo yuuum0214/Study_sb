@@ -1,5 +1,7 @@
 package com.co.kr.domain;
 
+import java.util.List;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,5 +15,7 @@ public class ReviewListDomain {
 	private String rbContent;
 	private String rbCreate;
 	private String rbUpdate;
+
+	
 
 }

@@ -1,21 +1,32 @@
 package com.co.kr.service;
 
+import java.util.Iterator;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.co.kr.domain.AskListDomain;
-import com.co.kr.domain.BoardListDomain;
+import com.co.kr.domain.ReviewFileDomain;
 import com.co.kr.domain.ReviewListDomain;
 import com.co.kr.mapper.ReviewMapper;
-import com.co.kr.mapper.UploadMapper;
+import com.co.kr.util.FileUtils;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class ReviewServiceImpl implements ReviewService{
 	
 	@Autowired
 	private ReviewMapper reviewMapper;
+	
+	@Autowired
+	private FileUtils fileUtils;
 	
 	@Override
 	public List<ReviewListDomain> selectReviewList() throws Exception {
@@ -23,8 +34,29 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 	
 	@Override
-	public void insertReview(ReviewListDomain reviewListDomain) throws Exception{
+	public void insertReview(ReviewListDomain reviewListDomain, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception{		
 		reviewMapper.insertReview(reviewListDomain);
+		List<ReviewFileDomain> list = fileUtils.parseFileInfo(reviewListDomain.getRbSeq(), multipartHttpServletRequest);
+		if(CollectionUtils.isEmpty(list) == false) {
+			reviewMapper.insertReviewFileList(list);
+		}
+		
+		/*if(ObjectUtils.isEmpty(multipartHttpServletRequest) == false) {
+			Iterator<String> Iterator = multipartHttpServletRequest.getFileNames();
+			String name;
+			while(Iterator.hasNext()) {
+				name = Iterator.next();
+				log.debug("file tag name :"+name);
+				List<MultipartFile> list = multipartHttpServletRequest.getFiles(name);
+				for(MultipartFile multipartFile : list) {
+					log.debug("start file information");
+					log.debug("file name :"+multipartFile.getOriginalFilename());
+					log.debug("file size :"+multipartFile.getSize());
+					log.debug("file content type :"+multipartFile.getContentType());
+					log.debug("end file information.\n");
+				}
+			}
+		}*/
 	}
 	
 	@Override
@@ -47,6 +79,12 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public int ReviewSeq() {
 		return reviewMapper.ReviewSeq();
+	}
+
+	@Override
+	public List<ReviewFileDomain> getReviewFiles(int rbSeq) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
